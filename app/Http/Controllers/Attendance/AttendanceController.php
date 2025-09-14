@@ -25,17 +25,18 @@ class AttendanceController extends Controller
     }
 
     public function attendanceView($id){
-        $student = Student::where('class_id', $id)->with('room')->get();
+        $student = Student::where('class_id', $id)->where('attend_date', $this->date)->with('room')->get();
         
         if(empty($student)){
             return redirect()->back()->with('error','This class no student available now.');
         }
 
+        $totalStudent = Student::where('class_id', $id)->count();
         $attend = Attendance::with('student')->where('class_id', $id)->where('attendance_date', $this->date)->get();
         $present = Attendance::where('status', '=', 'Present')->where('class_id', $id)->where('attendance_date', $this->date)->count();
         $absent = Attendance::where('status', '=', 'Absent')->where('class_id', $id)->where('attendance_date', $this->date)->count();
         
-        return view('attendance.attendance-list', compact('student','attend','present','absent'));
+        return view('attendance.attendance-list', compact('student','totalStudent','attend','present','absent'));
     }
 
     public function stdPresent($id){
@@ -57,7 +58,10 @@ class AttendanceController extends Controller
         $attend->status = 'Present';
         $attend->remarks = 'N/A';
 
+        $student->attend_date = Carbon::now()->addDay();
+
         $attend->save();
+        $student->update();
         return redirect()->back()->with('success','Student attend in the class. Thank you.');
     }
 
@@ -80,7 +84,10 @@ class AttendanceController extends Controller
         $attend->status = 'Absent';
         $attend->remarks = 'N/A';
 
+        $student->attend_date = Carbon::now()->addDay();
+
         $attend->save();
+        $student->update();
         return redirect()->back()->with('error','Student not attend in the class. Thank you.');
     }
 

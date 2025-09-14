@@ -49,12 +49,12 @@
     <script src="{{ asset('assets/js/script.js') }}"></script>
     
     <script>
-      layout_change('false');
+      layout_change('light');
     </script>
      
     
     <script>
-      layout_theme_sidebar_change('dark');
+      layout_theme_sidebar_change('false');
     </script>
     
      

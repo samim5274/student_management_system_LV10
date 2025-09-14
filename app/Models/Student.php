@@ -45,6 +45,7 @@ class Student extends Model
 
         'status',
         'class_id',
+        'attend_date',
         'remark',
 
         'photo',

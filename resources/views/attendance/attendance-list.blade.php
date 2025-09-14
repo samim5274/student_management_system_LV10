@@ -136,8 +136,9 @@
 
                             <!-- Badges -->
                             <div class="flex flex-wrap gap-3">
+                                
                                 <span class="text-black bg-green-200 px-4 py-2 rounded-full font-medium shadow hover:bg-green-300 transition-colors duration-300">
-                                    Total: {{ $present + $absent }}
+                                    Total: {{ $totalStudent }}
                                 </span>
 
                                 <span class="text-black bg-blue-200 px-4 py-2 rounded-full font-medium shadow hover:bg-blue-300 transition-colors duration-300">

@@ -13,7 +13,7 @@ use App\Models\Room;
 class StudentController extends Controller
 {
     public function studentList(){
-        $student = Student::all();
+        $student = Student::paginate(20);
         return view('student.student-list', compact('student'));
     }
 
@@ -106,8 +106,8 @@ class StudentController extends Controller
         $student->contact_number = $request->contact_number;
         $student->email          = $request->email;
         $student->password       = Hash::make('123456789'); // default password
-        $student->address1       = $request->address1;
-        $student->address2       = $request->address2;
+        $student->address1       = $request->present_address;
+        $student->address2       = $request->permanent_address;
 
         // Father Info
         $student->father_name       = $request->father_name;
@@ -181,45 +181,81 @@ class StudentController extends Controller
 
         // Validation
         $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'dob' => 'required|date',
-            'gender' => 'required|in:Male,Female,Other',
-            'blood_group' => 'nullable|string|max:10',
-            'national_id' => 'required|string|max:50|unique:students,national_id,' . $student->id,
-            'contact_number' => 'required|string|max:20',
-            'email' => 'required|email|unique:students,email,' . $student->id,
-            'address' => 'required|string',
-            'father_name' => 'required|string|max:255',
-            'father_contact' => 'nullable|string|max:20',
-            'mother_name' => 'required|string|max:255',
-            'mother_contact' => 'nullable|string|max:20',
-            'guardian_name' => 'nullable|string|max:255',
-            'guardian_contact' => 'nullable|string|max:20',
-            'guardian_relationship' => 'nullable|string|max:100',
-            'Class' => 'required|exists:rooms,id',
+            // Personal Information
+            'first_name'       => 'required|string|max:100',
+            'last_name'        => 'required|string|max:100',
+            'dob'              => 'nullable|date',
+            'gender'           => 'required|in:Male,Female,Other',
+            'blood_group'      => 'nullable|string|max:10',
+            'religion'         => 'nullable|string|max:50',
+            'nationality'      => 'nullable|string|max:50',
+            'national_id'      => 'nullable|string|max:50',
+            'contact_number'   => 'required|string|max:20',
+            'email'            => 'required|email',
+            'present_address'  => 'required|string|max:255',
+            'permanent_address'=> 'nullable|string|max:255',
+            'class_id'         => 'required',
+
+            // Guardian / Parent Information
+            'father_name'       => 'required|string|max:100',
+            'father_profession' => 'nullable|string|max:100',
+            'father_contact'    => 'nullable|string|max:20',
+            'father_email'      => 'nullable|email',
+            'father_nid'        => 'nullable|string|max:50',
+
+            'mother_name'       => 'required|string|max:100',
+            'mother_profession' => 'nullable|string|max:100',
+            'mother_contact'    => 'nullable|string|max:20',
+            'mother_email'      => 'nullable|email',
+            'mother_nid'        => 'nullable|string|max:50',
+
+            'guardian_name'         => 'required|string|max:100',
+            'guardian_contact'      => 'nullable|string|max:20',
+            'guardian_email'        => 'nullable|email',
+            'guardian_nid'          => 'nullable|string|max:50',
+            'guardian_relationship' => 'nullable|string|max:50',
         ]);
 
-        // Mass assignment
-        $student->fill([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'dob' => $request->dob,
-            'gender' => $request->gender,
-            'blood_group' => $request->blood_group,
-            'national_id' => $request->national_id,
-            'contact_number' => $request->contact_number,
-            'email' => $request->email,
-            'address' => $request->address,
-            'father_name' => $request->father_name,
-            'father_contact' => $request->father_contact,
-            'mother_name' => $request->mother_name,
-            'mother_contact' => $request->mother_contact,
-            'guardian_name' => $request->guardian_name,
-            'guardian_contact' => $request->guardian_contact,
-            'guardian_relationship' => $request->guardian_relationship,
-            'class_id' => $request->Class,
-        ]);
+
+        // Student Update
+        $student->first_name     = $request->first_name;
+        $student->last_name      = $request->last_name;
+        $student->dob            = $request->dob;
+        $student->gender         = $request->gender;
+        $student->blood_group    = $request->blood_group;
+        $student->religion       = $request->religion;
+        $student->nationality    = $request->nationality;
+        $student->national_id    = $request->national_id;
+        $student->contact_number = $request->contact_number;
+        $student->email          = $request->email;
+
+         // Address
+        $student->address1 = $request->present_address;
+        $student->address2 = $request->permanent_address ?? $request->present_address; // যদি permanent না থাকে, তাহলে present বসবে
+
+        // Father Info
+        $student->father_name       = $request->father_name;
+        $student->father_profession = $request->father_profession;
+        $student->father_contact    = $request->father_contact;
+        $student->father_email      = $request->father_email;
+        $student->father_nid        = $request->father_nid;
+
+        // Mother Info
+        $student->mother_name       = $request->mother_name;
+        $student->mother_profession = $request->mother_profession;
+        $student->mother_contact    = $request->mother_contact;
+        $student->mother_email      = $request->mother_email;
+        $student->mother_nid        = $request->mother_nid;
+
+        // Guardian Info
+        $student->guardian_name         = $request->guardian_name;
+        $student->guardian_contact      = $request->guardian_contact;
+        $student->guardian_email        = $request->guardian_email;
+        $student->guardian_nid          = $request->guardian_nid;
+        $student->guardian_relationship = $request->guardian_relationship;
+
+        // Others
+        $student->class_id = $request->class_id;
 
         // Handle photos
         $photos = [

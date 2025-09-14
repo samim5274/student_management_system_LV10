@@ -28,6 +28,7 @@
                             <tbody>
                                 @foreach($student as $val)
                                 <tr class="unread">
+                                    <td>{{$loop->iteration}}</td>
                                     <td>
                                         @if($val->photo)
                                             <a href="{{url('/edit-student-view/'.$val->id)}}"><img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('img/student/' . $val->photo) }}" alt="activity-user" /></a>
@@ -49,19 +50,60 @@
                                     </td>
                                     <td>
                                         <h6 class="text-muted">
-                                        <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                                        {{ \Carbon\Carbon::parse($val->dob)->format('d M, Y') }}
+                                            <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
+                                            {{ \Carbon\Carbon::parse($val->dob)->format('d M, Y') }}
                                         </h6>
                                         <p class="m-0"><i class="fa fa-droplet text-red-500 text-[10px] ltr:mr-4 rtl:ml-4"></i>{{$val->blood_group}}</p>
                                     </td>
                                     <td>
-                                        <!-- <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a> -->
                                         <a href="{{url('/edit-student-view/'.$val->id)}}" class="badge bg-theme-bg-1 text-white text-[12px]"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tbody>
+                            </tbody>                            
                         </table>
+
+                        <!-- paginatior -->
+                        @if ($student->hasPages())
+                            <div class="flex flex-wrap items-center justify-center mt-4 space-x-2">
+
+                                {{-- Previous Button --}}
+                                @if ($student->onFirstPage())
+                                    <span class="px-4 py-2 text-sm md:text-base bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
+                                        &laquo; Previous
+                                    </span>
+                                @else
+                                    <a href="{{ $student->previousPageUrl() }}" class="px-4 py-2 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                                        &laquo; Previous
+                                    </a>
+                                @endif
+
+                                {{-- Page Numbers --}}
+                                @php
+                                    $start = max(2, $student->currentPage() - 2);
+                                    $end = min($student->lastPage(), $student->currentPage() + 2);
+                                @endphp
+
+                                @for ($i = $start; $i <= $end; $i++)
+                                    @if ($i == $student->currentPage())
+                                        <span class="px-4 py-2 text-sm md:text-base bg-theme-bg-1 text-white rounded-lg">{{ $i }}</span>
+                                    @else
+                                        <a href="{{ $student->url($i) }}" class="px-4 py-2 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">{{ $i }}</a>
+                                    @endif
+                                @endfor
+
+                                {{-- Next Button --}}
+                                @if ($student->hasMorePages())
+                                    <a href="{{ $student->nextPageUrl() }}" class="px-4 py-2 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                                        Next &raquo;
+                                    </a>
+                                @else
+                                    <span class="px-4 py-2 text-sm md:text-base bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
+                                        Next &raquo;
+                                    </span>
+                                @endif
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

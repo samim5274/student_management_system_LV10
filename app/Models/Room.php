@@ -12,7 +12,7 @@ class Room extends Model
     protected $fillable = [
         'name',
         'section',
-        'class_teacher',
+        'class_teacher_id',
         'capacity',
     ];
 

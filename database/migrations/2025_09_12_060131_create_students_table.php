@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('nationality')->nullable();
 
             $table->string('national_id')->nullable();
-            $table->integer('contact_number')->nullable();
+            $table->string('contact_number')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
 
@@ -50,6 +50,7 @@ return new class extends Migration
             
             $table->integer('status')->default(1);
             $table->foreignId('class_id')->constrained('rooms')->onDelete('restrict');
+            $table->date('attend_date')->nullable();
             $table->string('remark')->nullable();
 
             $table->string('photo')->nullable();

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('section')->nullable();
-            $table->string('class_teacher')->nullable();
+            $table->foreignId('class_teacher_id')->constrained('teachers')->onDelete('restrict'); 
             $table->integer('capacity')->default(50);
             $table->timestamps();
         });

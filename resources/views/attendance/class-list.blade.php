@@ -69,7 +69,7 @@
                                     <div class="space-y-2 text-sm text-gray-600">
                                         <p>
                                             <i class="fa-solid fa-user-tie mr-2 text-blue-500"></i>
-                                            Teacher: {{ $val->class_teacher ?? 'Not Assigned' }}
+                                            Teacher: {{ $val->class_teacher_id ?? 'Not Assigned' }}
                                         </p>
                                         <p>
                                             <i class="fa-solid fa-users mr-2 text-purple-500"></i>

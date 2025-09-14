@@ -14,7 +14,7 @@
                 <img src="{{asset('assets/images/favicon.svg')}}" class="img-fluid logo logo-sm" alt="logo" />
             </a>
         </div>
-        <div class="navbar-content h-[calc(100vh_-_74px)] py-2.5">
+        <div class="navbar-content h-[calc(100vh_-_74px)] py-2.5 overflow-y-auto">
             <ul class="pc-navbar">
                 <li class="pc-item pc-caption">
                     <label>Navigation</label>
@@ -322,45 +322,7 @@
                         <span class="pc-mtext">Register</span>
                     </a>
                 </li>
-                <!-- Authentication end -->
-
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
-                    class="pc-mtext">Menu levels</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
-                    <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#!">Level 2.1</a></li>
-                        <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Level 2.2<span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
-                            <ul class="pc-submenu">
-                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
-                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
-                                <li class="pc-item pc-hasmenu">
-                                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
-                                    <ul class="pc-submenu">
-                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
-                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Level 2.3<span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
-                            <ul class="pc-submenu">
-                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
-                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
-                                <li class="pc-item pc-hasmenu">
-                                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
-                                    <ul class="pc-submenu">
-                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
-                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li> -->
             </ul>
         </div>
     </div>
 </nav>
-   

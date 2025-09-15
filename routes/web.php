@@ -36,3 +36,15 @@ Route::post('/add-new-subject', [SubjectController::class, 'addSubject']);
 
 Route::get('/exam-management', [ExamController::class, 'viewExam'])->name('exam-details-view');
 Route::post('/add-new-exam', [ExamController::class, 'addExam']);
+
+
+
+
+
+
+
+
+Route::get('/exam-class-list', [ExamController::class, 'classList'])->name('result-entry-class-view');
+Route::get('/class/exam/{class}', [ExamController::class, 'examView'])->name('class-exam-select');
+Route::get('/class/exam/{class}/{subject}/{exam}', [ExamController::class, 'classExam'])->name('class-exam-view');
+Route::post('/submit-mark/{id}', [ExamController::class, 'submitMark']);

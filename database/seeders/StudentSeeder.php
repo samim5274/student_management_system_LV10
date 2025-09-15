@@ -51,7 +51,7 @@ class StudentSeeder extends Seeder
                 'guardian_relationship' => $faker->randomElement(['Uncle', 'Aunt', 'Grandparent', 'Brother', 'Sister']),
 
                 'status'          => 1, // active
-                'class_id'        => $faker->numberBetween(5, 16),
+                'class_id'        => $faker->numberBetween(1, 12),
                 'attend_date'     => '2025-09-14',
                 'remark'          => 'N/A',
             ]);

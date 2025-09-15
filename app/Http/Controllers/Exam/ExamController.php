@@ -36,14 +36,103 @@ class ExamController extends Controller
             'max_marks' => 'required|numeric',
         ]);
 
-        Exam::create([
-            'name' => $request->name,
-            'date' => $this->date,
-            'class_id' => $request->class_id,
-            'subject_id' => $request->subject_id,
-            'max_marks' => $request->max_marks,
-        ]);
+        $exists = Exam::where('name', $request->name)->where('date', $request->date)->where('class_id', $request->class_id)->where('subject_id', $request->subject_id)->exists();
+
+        if ($exists) {
+            return redirect()->back()->with('warning', 'This exam already exists for this date, class and subject. Please try another!');
+        }
+
+        $exam = new Exam();
+        // Exam Info
+        $exam->name       = $request->name;
+        $exam->date       = $request->date;
+        $exam->class_id   = $request->class_id;
+        $exam->subject_id = $request->subject_id;
+        $exam->max_marks  = $request->max_marks;
+
+        $exam->save();
 
         return redirect()->back()->with('success', 'Exam added successfully!');
+    }
+
+
+
+
+
+
+
+
+    public function classList(){
+        $classes = Room::all();
+        return view('exam.exam-class-list', compact('classes'));
+    }
+
+    public function examView($class){
+        $exam = Exam::where('class_id', $class)->get();
+        return view('exam.class-exam-list', compact('exam','class'));
+    }
+
+    public function classExam($class, $subject , $exam){
+        $student = Student::where('class_id', $class)->get();
+        
+        $sub = Subject::find($subject);
+        $room = Room::find($class);
+        $exam = Exam::find($exam);
+        $marks = Mark::all();
+        return view('exam.mark-submit', compact('student','sub','exam','room','marks'));
+    }
+    
+    public function submitMark(Request $request, $id){
+        $request->validate([
+            'subject_id'     => 'required|exists:subjects,id',
+            'exam_id'     => 'required|exists:subjects,id',
+            'marks_obtained' => 'required|numeric|min:0|max:100',
+            'grade'          => 'nullable|string|max:2',
+            'gpa'            => 'nullable|numeric|min:0|max:4',
+            'remarks'        => 'nullable|string|max:255',
+        ]);
+
+        $findData = Mark::where('student_id', $id)->where('subject_id', $request->subject_id)->where('exam_id', $request->subject_id)->first();
+        if($findData){
+            return redirect()->back()->with('warning', 'Mark already submited. Please try another student. Thank you.');
+        }
+
+        $number = $request->marks_obtained;
+
+        if ($number >= 80) {
+            $grade = 'A+';
+            $gpa   = 5.00;
+        } elseif ($number >= 70) {
+            $grade = 'A';
+            $gpa   = 4.00;
+        } elseif ($number >= 60) {
+            $grade = 'A-';
+            $gpa   = 3.50;
+        } elseif ($number >= 50) {
+            $grade = 'B';
+            $gpa   = 3.00;
+        } elseif ($number >= 40) {
+            $grade = 'C';
+            $gpa   = 2.00;
+        } elseif ($number >= 33) {
+            $grade = 'D';
+            $gpa   = 1.00;
+        } else {
+            $grade = 'F';
+            $gpa   = 0.00;
+        }
+
+
+        $mark = new Mark();
+        $mark->student_id     = $id;
+        $mark->subject_id     = $request->subject_id;
+        $mark->exam_id        = $request->exam_id;
+        $mark->marks_obtained = $number;
+        $mark->grade          = $grade;
+        $mark->gpa            = $gpa;
+        $mark->remarks        = 'N/A';
+        
+        $mark->save();
+        return redirect()->back()->with('success', 'Mark submitted successfully!');
     }
 }

@@ -46,19 +46,19 @@
                         <span class="pc-mtext">Add New Student</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Student Profile</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="pc-item pc-hasmenu">
                     <a href="{{url('/class-list')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Attendance Records</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Results / Grades</span>
@@ -93,7 +93,7 @@
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Promotions</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Student section End -->
 
                 <!-- Teachers section start -->
@@ -113,7 +113,7 @@
                         <span class="pc-mtext">Add New Teacher</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Teacher Profile</span>
@@ -124,13 +124,7 @@
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Attendance Records</span>
                     </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/exam-management')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Exam Management</span>
-                    </a>
-                </li>
+                </li> 
                 <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
@@ -142,7 +136,7 @@
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Messages</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Teachers section End -->
 
                 <!-- Classes & Sections start  -->
@@ -150,7 +144,7 @@
                     <label>Classes & Sections</label>
                     <i data-feather="feather"></i>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Class List</span>
@@ -185,7 +179,7 @@
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Room / Lab Allocation</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Classes & Sections start  -->
 
 
@@ -194,7 +188,7 @@
                     <label>Attendance</label>
                     <i data-feather="feather"></i>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Daily Attendance</span>
@@ -217,7 +211,7 @@
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Attendance Analytics / Statistics</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Attendance end -->
 
 
@@ -227,6 +221,18 @@
                     <i data-feather="feather"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
+                    <a href="{{url('/exam-management')}}" class="pc-link">
+                        <span class="pc-micon"> <i data-feather="feather"></i></span>
+                        <span class="pc-mtext">Exam Management</span>
+                    </a>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="{{url('/exam-class-list')}}" class="pc-link">
+                        <span class="pc-micon"> <i data-feather="edit"></i></span>
+                        <span class="pc-mtext">Result Entry</span>
+                    </a>
+                </li>
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Exam Schedule / Timetable</span>
@@ -238,12 +244,7 @@
                         <span class="pc-mtext">Add Exam / Subject Exam</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Result Entry</span>
-                    </a>
-                </li>
+                
                 <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
@@ -261,7 +262,7 @@
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Online Exams / Quizzes</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Exam & Result end -->
 
                 <!-- Account Start -->
@@ -269,7 +270,7 @@
                     <label>Fees & Finance Account</label>
                     <i data-feather="feather"></i>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Fee Structure Setup</span>
@@ -301,7 +302,7 @@
                         <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
                         <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- Account End -->
 
 

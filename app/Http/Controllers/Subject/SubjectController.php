@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Exam;
 use App\Models\Mark;
+use App\Models\SubjectStudent;
 
 class SubjectController extends Controller
 {

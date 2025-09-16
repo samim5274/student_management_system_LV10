@@ -37,4 +37,9 @@ class Teacher extends Model
         'status',
         'remark',
     ];
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class, 'class_teacher_id', 'id');
+    }
 }

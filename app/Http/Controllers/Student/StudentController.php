@@ -287,4 +287,15 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Student information edited successfully!');
     }
 
+    public function classList(){
+        $classes = Room::all();
+        return view('student.class-list', compact('classes'));
+    }
+
+    public function stdList($class){
+        $students = Student::where('class_id', $class)->get();
+        $classes = Room::all();
+        return view('student.class-student-list', compact('students','classes'));
+    }
+
 }

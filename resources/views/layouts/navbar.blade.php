@@ -51,26 +51,20 @@
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Student Profile</span>
                     </a>
-                </li> -->
+                </li> 
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/class-list')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Attendance Records</span>
-                    </a>
-                </li>
-                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Results / Grades</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="pc-item pc-hasmenu">
                     <a href="{{url('/subject-view')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Subject</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!--  <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="feather"></i></span>
                         <span class="pc-mtext">Assignments</span>
@@ -188,6 +182,12 @@
                     <label>Attendance</label>
                     <i data-feather="feather"></i>
                 </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="{{url('/class-list')}}" class="pc-link">
+                        <span class="pc-micon"> <i data-feather="feather"></i></span>
+                        <span class="pc-mtext">Attendance Records</span>
+                    </a>
+                </li>
                 <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
@@ -232,20 +232,20 @@
                         <span class="pc-mtext">Result Entry</span>
                     </a>
                 </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
+                <li class="pc-item pc-hasmenu">
+                    <a href="{{url('/enrollment/class')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Exam Schedule / Timetable</span>
+                        <span class="pc-mtext">Enrollment</span>
                     </a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
+                    <a href="{{url('/student/promossion')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Add Exam / Subject Exam</span>
+                        <span class="pc-mtext">Student Promossion</span>
                     </a>
                 </li>
                 
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Grade Management / Grading Scales</span>

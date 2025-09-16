@@ -34,3 +34,21 @@ menu
         </li>
     </ul>
 </li> -->
+
+
+
+
+
+
+
+$table->id();
+$table->foreignId('student_id')->constrained('students')->onDelete('restrict');
+$table->foreignId('subject_id')->constrained('subjects')->onDelete('restrict');
+$table->timestamps();
+
+$table->unique(['student_id', 'subject_id']);
+
+protected $fillable = [
+        'student_id',
+        'subject_id',
+    ];

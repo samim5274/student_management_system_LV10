@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Exam;
 use App\Models\Mark;
+use App\Models\StudentSubject;
 
 class ExamController extends Controller
 {
@@ -73,13 +74,17 @@ class ExamController extends Controller
     }
 
     public function classExam($class, $subject , $exam){
-        $student = Student::where('class_id', $class)->get();
-        
+        $students = Student::where('class_id', $class)
+            ->whereHas('subjects', function ($query) use ($subject) {
+                $query->where('subjects.id', $subject);
+            })->get();
+
         $sub = Subject::find($subject);
         $room = Room::find($class);
         $exam = Exam::find($exam);
-        $marks = Mark::all();
-        return view('exam.mark-submit', compact('student','sub','exam','room','marks'));
+        $marks = Mark::where('subject_id', $subject)->where('exam_id', $exam->id)->get();
+        //dd($exam);
+        return view('exam.mark-submit', compact('students','sub','exam','room','marks'));
     }
     
     public function submitMark(Request $request, $id){
@@ -92,7 +97,7 @@ class ExamController extends Controller
             'remarks'        => 'nullable|string|max:255',
         ]);
 
-        $findData = Mark::where('student_id', $id)->where('subject_id', $request->subject_id)->where('exam_id', $request->subject_id)->first();
+        $findData = Mark::where('student_id', $id)->where('subject_id', $request->subject_id)->where('exam_id', $request->exam_id)->first();
         if($findData){
             return redirect()->back()->with('warning', 'Mark already submited. Please try another student. Thank you.');
         }

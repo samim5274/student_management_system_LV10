@@ -140,4 +140,19 @@ class ExamController extends Controller
         $mark->save();
         return redirect()->back()->with('success', 'Mark submitted successfully!');
     }
+
+    public function resultReport(){
+        $classes = Room::all();
+        return view('exam.report.class-list', compact('classes'));
+    }
+
+    public function resultReportClass($class){
+        $students = Student::where('class_id', $class)->get();
+        return view('exam.report.student-list', compact('class','students'));
+    }
+
+    public function showResult($class, $student){
+        $marks = Mark::where('student_id', $student)->get();
+        return view('exam.report.result-view', compact('marks','class','student'));
+    }
 }

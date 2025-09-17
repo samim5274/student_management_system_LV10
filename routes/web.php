@@ -8,6 +8,7 @@ use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\Enrollment\EntrollmentController;
+use App\Http\Controllers\StudentPortal\StudentPortalController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,7 +23,7 @@ Route::get('/edit-student-view/{id}', [StudentController::class, 'editStudentVie
 Route::post('/edit-student/{id}', [StudentController::class, 'editStudent']);
 Route::get('/student/promossion', [StudentController::class, 'classList'])->name('promossion-class-list');
 Route::get('/promossion/class/{class}', [StudentController::class, 'stdList'])->name('student-list-promossion');
-
+Route::post('/update/student/class/{student}', [StudentController::class, 'updateStudent']);
 
 
 
@@ -72,3 +73,12 @@ Route::get('/exam-class-list', [ExamController::class, 'classList'])->name('resu
 Route::get('/class/exam/{class}', [ExamController::class, 'examView'])->name('class-exam-select');
 Route::get('/class/subject/exam/{class}/{subject}/{exam}', [ExamController::class, 'classExam'])->name('class-exam-view');
 Route::post('/submit-mark/{id}', [ExamController::class, 'submitMark']);
+Route::get('/result-and-report-analytics', [ExamController::class, 'resultReport'])->name('result-report-view');
+Route::get('/result-report/class/{class}', [ExamController::class, 'resultReportClass'])->name('result-report-student-list');
+Route::get('/result-report/class/student/{class}/{student}', [ExamController::class, 'showResult'])->name('show-student-result');
+
+
+
+
+// ======================================================= student portal routes =======================================================
+Route::get('/student-dashboard', [StudentPortalController::class, 'stdDashboard'])->name('student-dashboard');

@@ -298,4 +298,26 @@ class StudentController extends Controller
         return view('student.class-student-list', compact('students','classes'));
     }
 
+    public function updateStudent(Request $request, $student){
+        
+        // $request->validate([
+        //     'student_id' => 'required|exists:students,id',
+        //     'class_id'   => 'required|exists:class_id,id',
+        //     'roll'       => 'required|integer|min:1',
+        // ]);
+
+        $students = Student::where('id', $student)->first();
+
+        if (!$students) {
+            return redirect()->back()->with('error', 'Selected student not found. Please try another!');
+        }
+
+        $students->class_id    = $request->class_id;
+        $students->roll_number = $request->roll;
+
+        $students->update();
+
+        return redirect()->back()->with('success', 'Selected student to "'.$students->room->name.'" class updated successfully.');
+    }
+
 }

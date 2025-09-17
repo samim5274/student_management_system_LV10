@@ -49,6 +49,7 @@ return new class extends Migration
             $table->string('guardian_relationship')->nullable();
             
             $table->integer('status')->default(1);
+            $table->integer('roll_number')->default(1);
             $table->foreignId('class_id')->constrained('rooms')->onDelete('restrict');
             $table->date('attend_date')->nullable();
             $table->string('remark')->nullable();

@@ -59,6 +59,9 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach($student as $val)
                                 <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 whitespace-nowrap">
+                                        <span class="text-gray-400 text-sm">{{ $val->roll_number }}</span>
+                                    </td>
                                     <!-- Photo -->
                                     <td class="px-4 py-3 whitespace-nowrap">
                                         @if($val->photo)

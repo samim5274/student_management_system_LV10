@@ -45,6 +45,7 @@ class Student extends Model
         'guardian_relationship',
 
         'status',
+        'roll_number',
         'class_id',
         'attend_date',
         'remark',
@@ -66,6 +67,11 @@ class Student extends Model
     public function subjects(): BelongsToMany
     {
         return $this->belongsToMany(Subject::class, 'student_subjects', 'student_id', 'subject_id');
+    }
+
+    public function results()
+    {
+        return $this->hasMany(ExamResult::class, 'student_id');
     }
 
 }

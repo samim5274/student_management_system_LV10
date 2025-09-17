@@ -16,7 +16,18 @@ class StudentSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        $rollCounters = [];
+
         for ($i = 1; $i <= 1500; $i++) {
+
+            $classId = $faker->numberBetween(1, 12);
+
+            if (!isset($rollCounters[$classId])) {
+                $rollCounters[$classId] = 1;
+            } else {
+                $rollCounters[$classId]++;
+            }
+
             Student::create([
                 'first_name'       => $faker->firstName,
                 'last_name'        => $faker->lastName,
@@ -51,8 +62,9 @@ class StudentSeeder extends Seeder
                 'guardian_relationship' => $faker->randomElement(['Uncle', 'Aunt', 'Grandparent', 'Brother', 'Sister']),
 
                 'status'          => 1, // active
-                'class_id'        => $faker->numberBetween(1, 12),
-                'attend_date'     => '2025-09-14',
+                'roll_number'     => $rollCounters[$classId], // sequential roll per class
+                'class_id'        => $classId,
+                'attend_date'     => '2025-01-14',
                 'remark'          => 'N/A',
             ]);
         }

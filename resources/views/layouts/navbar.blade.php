@@ -244,6 +244,12 @@
                         <span class="pc-mtext">Student Promossion</span>
                     </a>
                 </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="{{url('/result-and-report-analytics')}}" class="pc-link">
+                        <span class="pc-micon"> <i data-feather="edit"></i></span>
+                        <span class="pc-mtext">Result Reports & Analytics</span>
+                    </a>
+                </li>
                 
                 <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
@@ -251,12 +257,7 @@
                         <span class="pc-mtext">Grade Management / Grading Scales</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">esult Reports & Analytics</span>
-                    </a>
-                </li>
+                
                 <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>

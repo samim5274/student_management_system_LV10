@@ -50,12 +50,14 @@
 
             <!-- Card -->
             <div class="card rounded-lg border shadow-sm">
-                <div class="card-header px-4 py-3 border-b bg-gray-100">
+                <div class="card-header px-4 py-3 border-b bg-gray-100 flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-700">Classes List</h3>
+                    <a href="{{url('/attendance-apply')}}"><button class="px-4 py-2 bg-[#475775] text-white text-sm font-medium rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">Attendance Apply</button></a>
                 </div>
                 <div class="card-body p-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($room as $val)
+                        @if($val->id != 13)
                             <a href="{{url('/student-attendence/'.$val->id)}}">
                                 <div class="border p-5 rounded-md bg-white shadow-sm transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
                                     <div class="flex items-center justify-between mb-3">
@@ -69,7 +71,7 @@
                                     <div class="space-y-2 text-sm text-gray-600">
                                         <p>
                                             <i class="fa-solid fa-user-tie mr-2 text-blue-500"></i>
-                                            Teacher: {{ $val->class_teacher_id ?? 'Not Assigned' }}
+                                            Teacher: {{ $val->teachers->first_name }} {{ $val->teachers->last_name }}
                                         </p>
                                         <p>
                                             <i class="fa-solid fa-users mr-2 text-purple-500"></i>
@@ -78,6 +80,7 @@
                                     </div>
                                 </div>
                             </a>
+                            @endif
                         @endforeach
                     </div>
                 </div>

@@ -251,14 +251,14 @@
                     </a>
                 </li>
                 
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
+                <li class="pc-item pc-hasmenu">
+                    <a href="{{url('/total-report-result')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Grade Management / Grading Scales</span>
+                        <span class="pc-mtext">Total Result & Reports</span>
                     </a>
                 </li>
                 
-                <li class="pc-item pc-hasmenu">
+                <!--  <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Online Exams / Quizzes</span>

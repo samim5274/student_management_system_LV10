@@ -55,6 +55,7 @@
                 <div class="card-body p-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($classes as $val)
+                        @if($val->id != 13)
                             <a href="{{url('/promossion/class/'.$val->id)}}" class="block group ">
                                 <div class="border border-gray-200 p-5 rounded-xl bg-white
                                             group-hover:-translate-y-2 group-hover:shadow-xl
@@ -82,6 +83,7 @@
                                     </div>
                                 </div>
                             </a>
+                        @endif
                         @endforeach
                     </div>
                 </div>

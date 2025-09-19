@@ -38,7 +38,7 @@
             <div class="page-header mb-6">
                 <div class="page-block">
                     <div class="page-header-title">
-                        <h5 class="mb-1 font-semibold text-gray-800">Report & Result Analytices</h5>
+                        <h5 class="mb-1 font-semibold text-gray-800">Total Report & Result</h5>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -56,7 +56,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($classes as $val)
                         @if($val->id != 13)
-                            <a href="{{url('/result-report/class/'.$val->id)}}">
+                            <a href="{{url('/total-result-report/class/'.$val->id)}}">
                                 <div class="border p-5 rounded-md bg-white shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
                                     <div class="flex items-center justify-between mb-3">
                                         <h3 class="text-lg font-semibold text-[#3F4D67]">

@@ -155,4 +155,16 @@ class ExamController extends Controller
         $marks = Mark::where('student_id', $student)->get();
         return view('exam.report.result-view', compact('marks','class','student'));
     }
+
+    public function totalReport(){
+        $classes = Room::all();
+        return view('exam.report.class-list-2', compact('classes'));
+    }
+
+    public function totalResult($class){
+        $students = Student::where('class_id', $class)->get();
+        $subjects = Subject::where('class_id', $class)->get();
+        dd($students,$subjects);
+        return view('exam.report.result-view', compact('marks','class','student'));
+    }
 }

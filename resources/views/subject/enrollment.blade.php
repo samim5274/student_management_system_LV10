@@ -59,6 +59,7 @@
                     <div class="card-body p-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach($classes as $val)
+                            @if($val->id != 13)
                             <a href="{{url('/enrollment/class/student/'.$val->id)}}">
                                 <div class="border p-5 rounded-md bg-white shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
                                     <div class="flex items-center justify-between mb-3">
@@ -81,6 +82,7 @@
                                     </div>
                                 </div>
                             </a>
+                            @endif
                             @endforeach
                         </div>
                     </div>

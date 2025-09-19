@@ -91,5 +91,13 @@ class AttendanceController extends Controller
         return redirect()->back()->with('error','Student not attend in the class. Thank you.');
     }
 
+    public function attendApply(){
+        $students = Student::all();
+        foreach($students as $student){
+            $student->attend_date = $this->date;
+            $student->update();
+        }
+        return redirect()->back()->with('success','Student attendance apply for all classes. Thank you.');
+    }
 
 }

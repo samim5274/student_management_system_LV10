@@ -45,7 +45,7 @@ Route::get('/class-list', [AttendanceController::class, 'classList'])->name('cla
 Route::get('/student-attendence/{id}', [AttendanceController::class, 'attendanceView'])->name('class-wise-attendance-view');
 Route::get('/std-present/{id}', [AttendanceController::class, 'stdPresent']);
 Route::get('/std-absend/{id}', [AttendanceController::class, 'stdAbsend']);
-
+Route::get('/attendance-apply', [AttendanceController::class, 'attendApply']);
 
 
 
@@ -76,7 +76,8 @@ Route::post('/submit-mark/{id}', [ExamController::class, 'submitMark']);
 Route::get('/result-and-report-analytics', [ExamController::class, 'resultReport'])->name('result-report-view');
 Route::get('/result-report/class/{class}', [ExamController::class, 'resultReportClass'])->name('result-report-student-list');
 Route::get('/result-report/class/student/{class}/{student}', [ExamController::class, 'showResult'])->name('show-student-result');
-
+Route::get('/total-report-result', [ExamController::class, 'totalReport'])->name('total-report-class-list');
+Route::get('/total-result-report/class/{class}', [ExamController::class, 'totalResult'])->name('total-result-report');
 
 
 

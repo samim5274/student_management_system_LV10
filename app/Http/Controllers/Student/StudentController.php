@@ -12,6 +12,13 @@ use App\Models\Room;
 
 class StudentController extends Controller
 {
+    public $date;
+
+    public function __construct()
+    {
+        $this->date = Carbon::now()->format('Y-m-d');
+    }
+
     public function studentList(){
         $student = Student::paginate(20);
         return view('student.student-list', compact('student'));
@@ -300,20 +307,24 @@ class StudentController extends Controller
 
     public function updateStudent(Request $request, $student){
         
-        // $request->validate([
-        //     'student_id' => 'required|exists:students,id',
-        //     'class_id'   => 'required|exists:class_id,id',
-        //     'roll'       => 'required|integer|min:1',
-        // ]);
-
         $students = Student::where('id', $student)->first();
 
         if (!$students) {
             return redirect()->back()->with('error', 'Selected student not found. Please try another!');
         }
 
-        $students->class_id    = $request->class_id;
-        $students->roll_number = $request->roll;
+        $classId = $request->class_id;
+        $rollNo = $request->roll;
+
+        if($classId == 13){
+            $students->remark = 'B'.Carbon::now()->format('Y');
+            $students->class_id    = $classId;
+            $students->update();
+            return redirect()->back()->with('success', 'Student pass from "'.$students->room->name.'" this school.');
+        }
+
+        $students->class_id    = $classId;
+        $students->roll_number = $rollNo;
 
         $students->update();
 

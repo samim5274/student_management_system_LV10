@@ -84,6 +84,7 @@
                 <div class="card-body p-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($classes as $val)
+                        @if($val->id != 13)
                             <a href="{{url('/class/exam/'.$val->id)}}">
                                 <div class="border p-5 rounded-md bg-white shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
                                     <div class="flex items-center justify-between mb-3">
@@ -97,7 +98,7 @@
                                     <div class="space-y-2 text-sm text-gray-600">
                                         <p>
                                             <i class="fa-solid fa-user-tie mr-2 text-blue-500"></i>
-                                            Teacher: {{ $val->class_teacher_id ?? 'Not Assigned' }}
+                                            Teacher: {{ $val->teachers->first_name }} {{ $val->teachers->last_name }}
                                         </p>
                                         <p>
                                             <i class="fa-solid fa-users mr-2 text-purple-500"></i>
@@ -106,6 +107,7 @@
                                     </div>
                                 </div>
                             </a>
+                        @endif
                         @endforeach
                     </div>
                 </div>

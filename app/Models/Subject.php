@@ -26,7 +26,7 @@ class Subject extends Model
 
     public function results()
     {
-        return $this->hasMany(ExamResult::class, 'subject_id');
+        return $this->hasMany(Mark::class, 'subject_id');
     }
 
 }

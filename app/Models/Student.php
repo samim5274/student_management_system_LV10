@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Student extends Model
+class Student extends Authenticatable
 {
     use HasFactory;
 
@@ -71,7 +72,7 @@ class Student extends Model
 
     public function results()
     {
-        return $this->hasMany(ExamResult::class, 'student_id');
+        return $this->hasMany(Mark::class, 'student_id');
     }
 
 }

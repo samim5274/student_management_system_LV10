@@ -313,13 +313,13 @@
                     <i data-feather="monitor"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="../pages/login-v1.html" class="pc-link" target="_blank">
+                    <a href="{{url('/login')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="lock"></i></span>
                         <span class="pc-mtext">Login</span>
                     </a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="../pages/register-v1.html" class="pc-link" target="_blank">
+                    <a href="{{url('/register')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="user-plus"></i></span>
                         <span class="pc-mtext">Register</span>
                     </a>

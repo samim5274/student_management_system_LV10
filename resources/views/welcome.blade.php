@@ -31,6 +31,9 @@
     <!-- [ Header Topbar ] start -->
     @include('layouts.header')
     <!-- [ Header ] end -->
+    
+    <!-- Flash Message -->
+    @include('layouts.message')
 
 
     <!-- [ Main Content ] start -->
@@ -47,6 +50,24 @@
     <script src="{{ asset('assets/js/component.js') }}"></script>
     <script src="{{ asset('assets/js/theme.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
+    <script>
+        // Pop up message (auto-hide)
+        document.addEventListener("DOMContentLoaded", () => {
+            const popup = document.getElementById('popup');
+            if (popup) {
+                // Show popup
+                setTimeout(() => {
+                    popup.classList.remove('opacity-0', 'translate-y-10');
+                }, 100); // small delay for animation
+
+                // Hide popup after 3 seconds
+                setTimeout(() => {
+                    popup.classList.add('opacity-0', 'translate-y-10');
+                }, 3000);
+            }
+        });
+    </script>
     
     <script>
       layout_change('light');

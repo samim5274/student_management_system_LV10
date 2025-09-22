@@ -162,9 +162,25 @@ class ExamController extends Controller
     }
 
     public function totalResult($class){
-        $students = Student::where('class_id', $class)->get();
+        $students = Student::where('class_id', $class)->with('results.subject')->get();
         $subjects = Subject::where('class_id', $class)->get();
-        dd($students,$subjects);
-        return view('exam.report.result-view', compact('marks','class','student'));
+
+        $studentResults = [];
+
+        foreach ($students as $student) {
+            $totalMarks = 0;
+            foreach ($subjects as $subject) {
+                $result = $student->results->firstWhere('subject_id', $subject->id);
+                $totalMarks += $result ? $result->marks_obtained : 0;
+            }
+
+            $studentResults[] = [
+                'student' => $student,
+                'total_marks' => $totalMarks
+            ];
+        }
+        
+        //dd($studentResults);
+        return view('exam.report.student-result-view', compact('students','subjects','studentResults'));
     }
 }

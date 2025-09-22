@@ -4,12 +4,11 @@
         <div class="page-header">
           <div class="page-block">
             <div class="page-header-title">
-              <h5 class="mb-0 font-medium">Default</h5>
+              <h5 class="mb-0 font-medium">Dashboard</h5>
             </div>
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-              <li class="breadcrumb-item" aria-current="page">Default</li>
+              <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+              <li class="breadcrumb-item" aria-current="page">Dashboard</li>
             </ul>
           </div>
         </div>
@@ -17,66 +16,210 @@
 
         <!-- [ Main Content ] start -->
         <div class="grid grid-cols-12 gap-x-6">
-          <div class="col-span-12 xl:col-span-4 md:col-span-6">
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="card">
               <div class="card-header !pb-0 !border-b-0">
-                <h5>Daily Sales</h5>
+                <h5>Total Student</h5>
               </div>
               <div class="card-body">
                 <div class="flex items-center justify-between gap-3 flex-wrap">
                   <h3 class="font-light flex items-center mb-0">
-                    <i class="feather icon-arrow-up text-success-500 text-[30px] mr-1.5"></i>
-                    $ 249.95
+                    <i class="fa-solid fa-graduation-cap text-success-500 text-[30px] mr-1.5"></i>
+                    {{ $totalStudent }}
                   </h3>
-                  <p class="mb-0">67%</p>
-                </div>
-                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
-                  <div class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
-                    style="width: 75%"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-span-12 xl:col-span-4 md:col-span-6">
+
+
+
+
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="card">
               <div class="card-header !pb-0 !border-b-0">
-                <h5>Monthly Sales</h5>
+                <h5>Total Boys</h5>
               </div>
               <div class="card-body">
                 <div class="flex items-center justify-between gap-3 flex-wrap">
                   <h3 class="font-light flex items-center mb-0">
-                    <i class="feather icon-arrow-down text-danger-500 text-[30px] mr-1.5"></i>
-                    $ 2.942.32
+                    <i class="fa-solid fa-mars text-success-500 text-[30px] mr-1.5"></i>
+                    {{ $maleStudent }}
                   </h3>
-                  <p class="mb-0">36%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Total Girls</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-venus-mars text-success-500 text-[30px] mr-1.5"></i>
+                    {{ $femaleStudent }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Other's Studnet</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-non-binary text-success-500 text-[30px] mr-1.5"></i>
+                    {{ $otherStudent }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-span-12 xl:col-span-6 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Today's Attendance</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-mitten text-purple-500 text-[30px] mr-1.5"></i>
+                    {{ $totalAttendance }}
+                  </h3>
+                  @php
+                      $percentage = $totalStudent > 0 ? ($totalAttendance / $totalStudent) * 100 : 0;
+                  @endphp
+                  <p class="mb-0">{{ number_format($percentage, 2) }}%</p>
                 </div>
                 <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
                   <div class="bg-theme-bg-2 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
-                    style="width: 35%"></div>
+                    style="width: {{ number_format($percentage, 2) }}%"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-span-12 xl:col-span-4">
+          <div class="col-span-12 xl:col-span-6 md:col-span-6">
             <div class="card">
               <div class="card-header !pb-0 !border-b-0">
-                <h5>Yearly Sales</h5>
+                <h5>Today's Absent</h5>
               </div>
               <div class="card-body">
                 <div class="flex items-center justify-between gap-3 flex-wrap">
                   <h3 class="font-light flex items-center mb-0">
-                    <i class="feather icon-arrow-up text-success-500 text-[30px] mr-1.5"></i>
-                    $8.638.32
+                    <i class="fa-solid fa-mitten text-red-500 text-[30px] mr-1.5"></i>
+                    {{ $totalAbsent }}
                   </h3>
-                  <p class="mb-0">80%</p>
+                  @php
+                      $percentageA = $totalStudent > 0 ? ($totalAbsent / $totalStudent) * 100 : 0;
+                  @endphp
+                  <p class="mb-0">{{ number_format($percentageA, 2) }}%</p>
                 </div>
                 <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
-                  <div class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
-                    style="width: 80%"></div>
+                  <div class="bg-red-500 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
+                    style="width: {{ number_format($percentageA, 2) }}%"></div>
                 </div>
               </div>
             </div>
           </div>
+          
+
+
+
+
+          <div class="col-span-12 xl:col-span-4 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Total Teacher</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-person-chalkboard text-purple-500 text-[30px] mr-1.5"></i>
+                    {{ $totalTeacher }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 xl:col-span-4 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Male Teacher</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-mars text-purple-500 text-[30px] mr-1.5"></i>
+                    {{ $maleTeacher }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 xl:col-span-4 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Female Teacher</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-venus-mars text-purple-500 text-[30px] mr-1.5"></i>
+                    {{ $femaleTeacher }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="col-span-12 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Class Room</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-landmark text-green-500 text-[30px] mr-1.5"></i>
+                    {{ $class }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 md:col-span-6">
+            <div class="card">
+              <div class="card-header !pb-0 !border-b-0">
+                <h5>Class Room</h5>
+              </div>
+              <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <h3 class="font-light flex items-center mb-0">
+                    <i class="fa-solid fa-landmark text-green-500 text-[30px] mr-1.5"></i>
+                    {{ $class }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
           <div class="col-span-12 xl:col-span-4">
             <div class="card card-social">
               <div class="card-body border-b border-theme-border dark:border-themedark-border">
@@ -166,210 +309,6 @@
                       <div class="bg-theme-bg-2 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 50%"></div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-12 xl:col-span-4 md:col-span-6">
-            <div class="card user-list">
-              <div class="card-header">
-                <h5>Rating</h5>
-              </div>
-              <div class="card-body">
-                <div class="flex items-center justify-between gap-1 mb-5">
-                  <h2 class="font-light flex items-center m-0">
-                    4.7
-                    <i class="fas fa-star text-[10px] ml-2.5 text-warning-500"></i>
-                  </h2>
-                  <h6 class="flex items-center m-0">
-                    0.4
-                    <i class="fas fa-caret-up text-success text-[22px] ml-2.5"></i>
-                  </h6>
-                </div>
-
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <h6 class="flex items-center gap-1">
-                    <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-                    5
-                  </h6>
-                  <h6>384</h6>
-                </div>
-                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-                  <div
-                    class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-                    role="progressbar"
-                    style="width: 70%"
-                  ></div>
-                </div>
-
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <h6 class="flex items-center gap-1">
-                    <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-                    4
-                  </h6>
-                  <h6>145</h6>
-                </div>
-                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-                  <div
-                    class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-                    role="progressbar"
-                    style="width: 35%"
-                  ></div>
-                </div>
-
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <h6 class="flex items-center gap-1">
-                    <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-                    3
-                  </h6>
-                  <h6>24</h6>
-                </div>
-                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-                  <div
-                    class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-                    role="progressbar"
-                    style="width: 25%"
-                  ></div>
-                </div>
-
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <h6 class="flex items-center gap-1">
-                    <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-                    2
-                  </h6>
-                  <h6>1</h6>
-                </div>
-                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-                  <div
-                    class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-                    role="progressbar"
-                    style="width: 10%"
-                  ></div>
-                </div>
-
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <h6 class="flex items-center gap-1">
-                    <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-                    1
-                  </h6>
-                  <h6>0</h6>
-                </div>
-                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-4 dark:bg-themedark-bodybg">
-                  <div
-                    class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-                    role="progressbar"
-                    style="width: 0%"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-12 xl:col-span-8 md:col-span-6">
-            <div class="card table-card">
-              <div class="card-header">
-                <h5>Recent Users</h5>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <tbody>
-                      <tr class="unread">
-                        <td>
-                          <img class="rounded-full max-w-10" style="width: 40px" src="../assets/images/user/avatar-1.jpg" alt="activity-user" />
-                        </td>
-                        <td>
-                          <h6 class="mb-1">Isabella Christensen</h6>
-                          <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                        </td>
-                        <td>
-                          <h6 class="text-muted">
-                            <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                            11 MAY 12:56
-                          </h6>
-                        </td>
-                        <td>
-                          <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                          <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                        </td>
-                      </tr>
-                      <tr class="unread">
-                        <td>
-                          <img class="rounded-full max-w-10" style="width: 40px" src="../assets/images/user/avatar-2.jpg" alt="activity-user" />
-                        </td>
-                        <td>
-                          <h6 class="mb-1">Mathilde Andersen</h6>
-                          <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                        </td>
-                        <td>
-                          <h6 class="text-muted">
-                            <i class="fas fa-circle text-danger text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                            11 MAY 10:35
-                          </h6>
-                        </td>
-                        <td>
-                          <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                          <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                        </td>
-                      </tr>
-                      <tr class="unread">
-                        <td>
-                          <img class="rounded-full max-w-10" style="width: 40px" src="../assets/images/user/avatar-3.jpg" alt="activity-user" />
-                        </td>
-                        <td>
-                          <h6 class="mb-1">Karla Sorensen</h6>
-                          <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                        </td>
-                        <td>
-                          <h6 class="text-muted">
-                            <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                            9 MAY 17:38
-                          </h6>
-                        </td>
-                        <td>
-                          <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                          <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                        </td>
-                      </tr>
-                      <tr class="unread">
-                        <td>
-                          <img class="rounded-full max-w-10" style="width: 40px" src="../assets/images/user/avatar-1.jpg" alt="activity-user" />
-                        </td>
-                        <td>
-                          <h6 class="mb-1">Ida Jorgensen</h6>
-                          <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                        </td>
-                        <td>
-                          <h6 class="text-muted f-w-300">
-                            <i class="fas fa-circle text-danger text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                            19 MAY 12:56
-                          </h6>
-                        </td>
-                        <td>
-                          <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                          <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                        </td>
-                      </tr>
-                      <tr class="unread">
-                        <td>
-                          <img class="rounded-full max-w-10" style="width: 40px" src="../assets/images/user/avatar-2.jpg" alt="activity-user" />
-                        </td>
-                        <td>
-                          <h6 class="mb-1">Albert Andersen</h6>
-                          <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                        </td>
-                        <td>
-                          <h6 class="text-muted">
-                            <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                            21 July 12:56
-                          </h6>
-                        </td>
-                        <td>
-                          <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                          <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </div>

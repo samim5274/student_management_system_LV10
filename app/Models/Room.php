@@ -18,7 +18,7 @@ class Room extends Model
 
     public function student()
     {
-        return $this->hasMany(Room::class, 'class_id', 'id');
+        return $this->hasMany(Student::class, 'class_id', 'id');
     }
 
     public function teachers()

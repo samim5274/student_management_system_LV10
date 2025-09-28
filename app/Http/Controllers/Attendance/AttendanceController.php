@@ -24,17 +24,26 @@ class AttendanceController extends Controller
         return view('attendance.class-list', compact('room'));
     }
 
-    public function attendanceView($id){
-        $student = Student::where('class_id', $id)->where('attend_date', $this->date)->with('room')->get();
+    public function attendanceView($class_id){
+        $student = Student::with('room')->where('class_id', $class_id)->where('attend_date', $this->date)->get();
         
-        if(empty($student)){
-            return redirect()->back()->with('error','This class no student available now.');
+        if ($student->isEmpty()){
+            return redirect('class-list')->with('error','This class no student available now.');
         }
 
-        $totalStudent = Student::where('class_id', $id)->count();
-        $attend = Attendance::with('student')->where('class_id', $id)->where('attendance_date', $this->date)->get();
-        $present = Attendance::where('status', '=', 'Present')->where('class_id', $id)->where('attendance_date', $this->date)->count();
-        $absent = Attendance::where('status', '=', 'Absent')->where('class_id', $id)->where('attendance_date', $this->date)->count();
+        $totalStudent = Student::where('class_id', $class_id)->count();
+        $attend = Attendance::with('student')
+            ->where('class_id', $class_id)
+            ->where('attendance_date', $this->date)
+            ->get();
+        $present = Attendance::where('status', 'Present')
+            ->where('class_id', $class_id)
+            ->where('attendance_date', $this->date)
+            ->count();
+        $absent = Attendance::where('status', 'Absent')
+            ->where('class_id', $class_id)
+            ->where('attendance_date', $this->date)
+            ->count();
         
         return view('attendance.attendance-list', compact('student','totalStudent','attend','present','absent'));
     }
@@ -42,7 +51,7 @@ class AttendanceController extends Controller
     public function stdPresent($id){
         $student = Student::where('id', $id)->first();
 
-        if(empty($student)){
+        if (empty($student)){
             return redirect()->back()->with('error','Student not found. Please try again.');
         }
 

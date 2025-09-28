@@ -74,8 +74,9 @@
                                         <label for="name" class="font-medium">Exam Name</label>
                                         <select name="name" id="name" class="form-select w-full rounded-md mt-1 border-gray-300 focus:border-green-500 focus:ring-green-500">
                                             <option selected disabled>-- Select Exam --</option>
-                                            <option value="Midterm">Midterm</option>
-                                            <option value="Final">Final</option>
+                                            @foreach($examName as $ex)
+                                            <option value="{{$ex->exam_name}}">{{$ex->exam_name}}</option>      
+                                            @endforeach                                      
                                         </select>
                                     </div>
                                     <div>

@@ -11,6 +11,8 @@ use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\Enrollment\EntrollmentController;
 use App\Http\Controllers\StudentPortal\StudentPortalController;
+use App\Http\Controllers\Room\ClassController;
+use App\Http\Controllers\Finance\FinanceController;
 
 Auth::routes();
 
@@ -57,7 +59,7 @@ Route::group(['middleware' => ['admin']], function(){
 
 
     Route::get('/class-list', [AttendanceController::class, 'classList'])->name('class-list');
-    Route::get('/student-attendence/{id}', [AttendanceController::class, 'attendanceView'])->name('class-wise-attendance-view');
+    Route::get('/student-attendence/{class_id}', [AttendanceController::class, 'attendanceView'])->name('class-wise-attendance-view');
     Route::get('/std-present/{id}', [AttendanceController::class, 'stdPresent']);
     Route::get('/std-absend/{id}', [AttendanceController::class, 'stdAbsend']);
     Route::get('/attendance-apply', [AttendanceController::class, 'attendApply']);
@@ -93,6 +95,36 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/result-report/class/student/{class}/{student}', [ExamController::class, 'showResult'])->name('show-student-result');
     Route::get('/total-report-result', [ExamController::class, 'totalReport'])->name('total-report-class-list');
     Route::get('/total-result-report/class/{class}', [ExamController::class, 'totalResult'])->name('total-result-report');
+    Route::get('/create-exam', [ExamController::class, 'createExam'])->name('create-exam-view');
+    Route::post('/create-new-exam', [ExamController::class, 'createNewExam']);
+
+
+
+
+    Route::get('/class-details', [ClassController::class, 'index'])->name('class-room-list');
+    Route::get('/add-class', [ClassController::class, 'addNew'])->name('add-new-class-view');
+    Route::post('/insert-class', [ClassController::class, 'insertClass']);
+    Route::get('/assign-teacher-list', [ClassController::class, 'assignTeacehr'])->name('assign-teacher-list-view');
+    Route::post('/assigned-teacher-update', [ClassController::class, 'update']);
+
+
+
+
+
+    Route::get('/fee-structure', [FinanceController::class, 'stuctureSetup'])->name('structure-management');
+    Route::get('/fee-collection', [FinanceController::class, 'FeeCollection'])->name('fee-collection-view');
+    Route::get('/class-finance/{class_id}', [FinanceController::class, 'StudentList'])->name('class-and student-list');
+    Route::get('/class/student/{class_id}/{student_id}', [FinanceController::class, 'feeView'])->name('student-class-fee-view');
+
+    Route::get('/finance-management', [FinanceController::class, 'financeManagement'])->name('finance-management');
+    Route::post('/add-new-finance-category', [FinanceController::class, 'store']);
+    Route::get('/finance-fee-structure', [FinanceController::class, 'financeFeeStructure'])->name('finance-fee-structure');
+    Route::post('/insert-fee-structure', [FinanceController::class, 'insertFeeStructure']);
+    Route::get('/finance-fee-payment', [FinanceController::class, 'financeFeePayment'])->name('finance-fee-payment');
+    Route::post('/fee-payments', [FinanceController::class, 'confirmPayment']);
+
+    Route::get('/students/{class_id}', [FinanceController::class, 'getStudentsByClass']);
+    Route::get('/fee-structures/{class_id}', [FinanceController::class, 'getFeeStructuresByClass']);
 
 
 

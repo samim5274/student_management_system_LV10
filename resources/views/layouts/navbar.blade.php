@@ -29,66 +29,47 @@
                 </li>
 
 
+
+
+
+
+
+
+
+
+
+
                 <!-- Student section start -->
                 <li class="pc-item pc-caption">
                     <label>Students</label>
                     <i data-feather="feather"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/student-list')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Student List / Directory</span>
-                    </a>
-                </li>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-graduation-cap"></i> </span><span
+                    class="pc-mtext">Student Details</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{url('/student-list')}}"> <span class="pc-micon"> <i class="fa-solid fa-user-tie"></i></span><span class="pc-mtext">Student List</span></a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/add-student-view')}}"> <span class="pc-micon"> <i data-feather="edit"></i></span><span class="pc-mtext">Admission Student</span></a></li>
+                    </ul>
+                </li>                
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/add-student-view')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="type"></i></span>
-                        <span class="pc-mtext">Add New Student</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
+                    class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!">Gender Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Class Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Section Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Status</a></li>
+                    </ul>
                 </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Student Profile</span>
-                    </a>
-                </li> 
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Results / Grades</span>
-                    </a>
-                </li> -->
-                <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/subject-view')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Subject</span>
-                    </a>
-                </li>
-                <!--  <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Assignments</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Fee Status / Payments</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Documents</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Promotions</span>
-                    </a>
-                </li> -->
                 <!-- Student section End -->
+
+
+
+
+
+
+
 
                 <!-- Teachers section start -->
                 <li class="pc-item pc-caption">
@@ -96,85 +77,80 @@
                     <i data-feather="feather"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/teacher-list')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Teacher List</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-user-tie"></i> </span><span
+                    class="pc-mtext">Teacher Details</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{url('/teacher-list')}}"> <span class="pc-micon"> <i class="fa-solid fa-user-tie"></i></span><span class="pc-mtext">Teacher List</span></a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('add-teacher-view')}}"> <span class="pc-micon"> <i data-feather="edit"></i>  </span><span class="pc-mtext">New Teacher</span></a></li>
+                    </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('add-teacher-view')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="type"></i></span>
-                        <span class="pc-mtext">Add New Teacher</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
+                    class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!">Gender Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Status</a></li>
+                    </ul>
                 </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Teacher Profile</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Attendance Records</span>
-                    </a>
-                </li> 
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Assignments</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Messages</span>
-                    </a>
-                </li> -->
                 <!-- Teachers section End -->
+
+
+
+
+
+
+
+
+
+
+
 
                 <!-- Classes & Sections start  -->
                 <li class="pc-item pc-caption">
                     <label>Classes & Sections</label>
                     <i data-feather="feather"></i>
                 </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Class List</span>
-                    </a>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-list-check"></i> </span><span
+                    class="pc-mtext">Classes Details</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{url('/add-class')}}"> <span class="pc-micon"> <i data-feather="edit"></i>  </span><span class="pc-mtext">Add New Class</span></a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/class-details')}}"> <span class="pc-micon"> <i class="fa-solid fa-address-card"></i> </span><span class="pc-mtext">Class List</span></a></li>
+                        <li class="pc-item"><a class="pc-link" href="#"> <span class="pc-micon"> <i class="fa-solid fa-business-time"></i>  </span><span class="pc-mtext">Class Schedule</span></a></li>                        
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/assign-teacher-list')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-user-plus"></i></span>
+                                <span class="pc-mtext">Assign Teachers</span>
+                            </a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="#"> <span class="pc-micon"> <i data-feather="feather"></i>  </span><span class="pc-mtext">Assignments</span></a></li>
+                    </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Add / Edit Class</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
+                    class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!">Daily</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
+                    </ul>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Section Management</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Class Schedule / Timetable</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Assign Teachers to Class/Section</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Room / Lab Allocation</span>
-                    </a>
-                </li> -->
                 <!-- Classes & Sections start  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <!-- Attendance start -->
@@ -183,36 +159,46 @@
                     <i data-feather="feather"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/class-list')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Attendance Records</span>
-                    </a>
-                </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Daily Attendance</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Attendance Reports</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Bulk Upload / Import Attendance</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-business-time"></i> </span><span
+                    class="pc-mtext">Attendance</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/class-list')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-clipboard-user"></i></span>
+                                <span class="pc-mtext">Attendance Records</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="#" class="pc-link">
+                                <span class="pc-micon"> <i data-feather="edit"></i></span>
+                                <span class="pc-mtext">Attendance Reports</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Attendance Analytics / Statistics</span>
-                    </a>
-                </li> -->
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
+                    class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!">Daily</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
+                    </ul>
+                </li>
                 <!-- Attendance end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <!-- Exam & Result start -->
@@ -221,90 +207,123 @@
                     <i data-feather="feather"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/exam-management')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Exam Management</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-address-book"></i> </span><span
+                    class="pc-mtext">Exam's & Result's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/exam-management')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-vial-virus"></i></span>
+                                <span class="pc-mtext">Exam Management</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/exam-class-list')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-bookmark"></i></span>
+                                <span class="pc-mtext">Result Entry</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/enrollment/class')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-door-open"></i></span>
+                                <span class="pc-mtext">Enrollment</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/student/promossion')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-up-down"></i></span>
+                                <span class="pc-mtext">Migration</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/result-and-report-analytics')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-chart-simple"></i></span>
+                                <span class="pc-mtext">Result Analytics</span>
+                            </a>
+                        </li>                
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/total-report-result')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-chart-gantt"></i></span>
+                                <span class="pc-mtext">Total Result</span>
+                            </a>
+                        </li>   
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/create-exam')}}" class="pc-link">
+                                <span class="pc-micon"> <i data-feather="edit"></i></span>
+                                <span class="pc-mtext">Create Exams</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/exam-class-list')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Result Entry</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/enrollment/class')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Enrollment</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/student/promossion')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Student Promossion</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/result-and-report-analytics')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Result Reports & Analytics</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
+                    class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!">Daily</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
+                    </ul>
                 </li>
                 
-                <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/total-report-result')}}" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Total Result & Reports</span>
-                    </a>
-                </li>
-                
-                <!--  <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Online Exams / Quizzes</span>
-                    </a>
-                </li> -->
                 <!-- Exam & Result end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <!-- Account Start -->
                 <li class="pc-item pc-caption">
                     <label>Fees & Finance Account</label>
                     <i data-feather="feather"></i>
                 </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Fee Structure Setup</span>
-                    </a>
-                </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Student Fee Collection</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Fee Status / Pending Fees</span>
-                    </a>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Generate Receipts</span>
-                    </a>
+                    <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-money-bill"></i> </span><span
+                    class="pc-mtext">Finance Management</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{url('/finance-management')}}">Fee Category</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/finance-fee-structure')}}">Fee Structure</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/finance-fee-payment')}}">Fee Payment</a></li>
+                    </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
-                    class="pc-mtext">Financial Reports</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
+                    class="pc-mtext">Finance Report</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#!">Daily</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Student Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Category Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Total Report's</a></li>
                     </ul>
-                </li> -->
+                </li>
                 <!-- Account End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <!-- Authentication star -->
@@ -324,6 +343,14 @@
                         <span class="pc-mtext">Register</span>
                     </a>
                 </li>
+                <!-- Authentication end -->
+
+
+
+
+
+
+
             </ul>
         </div>
     </div>

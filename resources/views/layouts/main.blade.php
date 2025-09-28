@@ -27,6 +27,12 @@
                     <i class="fa-solid fa-graduation-cap text-success-500 text-[30px] mr-1.5"></i>
                     {{ $totalStudent }}
                   </h3>
+                  @php
+                      $percentage = $totalStudent > 0 ? ($totalAttendance / $totalStudent) * 100 : 0;
+                      $percentageA = $totalStudent > 0 ? ($totalAbsent / $totalStudent) * 100 : 0;
+                      $totalPercentage = $percentage + $percentageA;
+                  @endphp
+                  <p class="mb-0">{{ number_format($totalPercentage, 2) }}%</p>
                 </div>
               </div>
             </div>
@@ -38,7 +44,7 @@
           <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="card">
               <div class="card-header !pb-0 !border-b-0">
-                <h5>Total Boys</h5>
+                <h5>Boys</h5>
               </div>
               <div class="card-body">
                 <div class="flex items-center justify-between gap-3 flex-wrap">
@@ -53,7 +59,7 @@
           <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="card">
               <div class="card-header !pb-0 !border-b-0">
-                <h5>Total Girls</h5>
+                <h5>Girls</h5>
               </div>
               <div class="card-body">
                 <div class="flex items-center justify-between gap-3 flex-wrap">
@@ -68,7 +74,7 @@
           <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="card">
               <div class="card-header !pb-0 !border-b-0">
-                <h5>Other's Studnet</h5>
+                <h5>Other's</h5>
               </div>
               <div class="card-body">
                 <div class="flex items-center justify-between gap-3 flex-wrap">
@@ -94,9 +100,6 @@
                     <i class="fa-solid fa-mitten text-purple-500 text-[30px] mr-1.5"></i>
                     {{ $totalAttendance }}
                   </h3>
-                  @php
-                      $percentage = $totalStudent > 0 ? ($totalAttendance / $totalStudent) * 100 : 0;
-                  @endphp
                   <p class="mb-0">{{ number_format($percentage, 2) }}%</p>
                 </div>
                 <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
@@ -117,9 +120,6 @@
                     <i class="fa-solid fa-mitten text-red-500 text-[30px] mr-1.5"></i>
                     {{ $totalAbsent }}
                   </h3>
-                  @php
-                      $percentageA = $totalStudent > 0 ? ($totalAbsent / $totalStudent) * 100 : 0;
-                  @endphp
                   <p class="mb-0">{{ number_format($percentageA, 2) }}%</p>
                 </div>
                 <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">

@@ -12,6 +12,7 @@ use App\Models\Subject;
 use App\Models\Exam;
 use App\Models\Mark;
 use App\Models\StudentSubject;
+use App\Models\ExamName;
 
 class ExamController extends Controller
 {
@@ -26,7 +27,8 @@ class ExamController extends Controller
         $exams = Exam::with('room', 'subject')->get();
         $subjects = Subject::all();
         $rooms = Room::all();
-        return view('exam.exam-list', compact('subjects', 'rooms', 'exams'));
+        $examName = ExamName::all();
+        return view('exam.exam-list', compact('subjects', 'rooms', 'exams','examName'));
     }
 
     public function addExam(Request $request){
@@ -102,24 +104,28 @@ class ExamController extends Controller
             return redirect()->back()->with('warning', 'Mark already submited. Please try another student. Thank you.');
         }
 
+        $exam = Exam::where('id', $request->exam_id)->first();
+        $max_mark = $exam->max_marks;
         $number = $request->marks_obtained;
 
-        if ($number >= 80) {
+        $percentage = ($number / $max_mark) * 100;
+
+        if ($percentage >= 80) {
             $grade = 'A+';
             $gpa   = 5.00;
-        } elseif ($number >= 70) {
+        } elseif ($percentage >= 70) {
             $grade = 'A';
             $gpa   = 4.00;
-        } elseif ($number >= 60) {
+        } elseif ($percentage >= 60) {
             $grade = 'A-';
             $gpa   = 3.50;
-        } elseif ($number >= 50) {
+        } elseif ($percentage >= 50) {
             $grade = 'B';
             $gpa   = 3.00;
-        } elseif ($number >= 40) {
+        } elseif ($percentage >= 40) {
             $grade = 'C';
             $gpa   = 2.00;
-        } elseif ($number >= 33) {
+        } elseif ($percentage >= 33) {
             $grade = 'D';
             $gpa   = 1.00;
         } else {
@@ -182,5 +188,18 @@ class ExamController extends Controller
         
         //dd($studentResults);
         return view('exam.report.student-result-view', compact('students','subjects','studentResults'));
+    }
+
+    public function createExam(){
+        $exams = ExamName::all();
+        return view('exam.create-exam', compact('exams'));
+    }
+
+    public function createNewExam(Request $request){
+        $name = $request->input('exam_name','');
+        $data = new ExamName();
+        $data->exam_name = $name;
+        $data->save();
+        return redirect()->back()->with('success', 'New exam created successfully!');
     }
 }

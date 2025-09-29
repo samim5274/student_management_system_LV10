@@ -180,9 +180,10 @@
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
                     class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#!">Daily</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/total-present-student')}}">Daily</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/date-wise-student')}}">Date wise Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/class-wise-student')}}">Class Wise Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/student-wise-attendance')}}">Student Wise Report's</a></li>
                     </ul>
                 </li>
                 <!-- Attendance end -->

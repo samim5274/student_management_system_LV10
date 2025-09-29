@@ -63,6 +63,13 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/std-present/{id}', [AttendanceController::class, 'stdPresent']);
     Route::get('/std-absend/{id}', [AttendanceController::class, 'stdAbsend']);
     Route::get('/attendance-apply', [AttendanceController::class, 'attendApply']);
+    Route::get('/total-present-student', [AttendanceController::class, 'dailyAttendet'])->name('today-present-stuent-list');
+    Route::get('/date-wise-student', [AttendanceController::class, 'searchAttendView'])->name('search-view');
+    Route::get('/search-date-wise-attend-student', [AttendanceController::class, 'searchAttendStudent']);
+    Route::get('/class-wise-student', [AttendanceController::class, 'classListAttend'])->name('class-wise-attend-list');
+    Route::get('/search-date-and-class-attend-student', [AttendanceController::class, 'findClassAttend']);
+    Route::get('/student-wise-attendance', [AttendanceController::class, 'studentAttend'])->name('student-wise-attendance');
+    Route::get('/find-student-attendace', [AttendanceController::class, 'findStudentAttend']);
 
 
 

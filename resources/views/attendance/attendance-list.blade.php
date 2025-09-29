@@ -51,7 +51,7 @@
             <!-- Card -->
             <div class="card rounded-lg border shadow-sm">
                 <div class="card-header px-4 py-3 border-b bg-gray-100">
-                    <h3 class="text-lg font-semibold text-gray-700">Class Rooms - {{ $student[0]->room->name ?? 'N/A' }} ( {{ $student[0]->room->section ?? 'N/A' }} )</h3>
+                    <h3 class="text-lg font-semibold text-gray-700">Class Rooms - {{ $attend[0]->class->name ?? 'N/A' }} ( {{ $attend[0]->class->section ?? 'N/A' }} )</h3>
                 </div>
                 <div class="card-body p-6 bg-gray-50 rounded-b-lg">
                     <div class="overflow-x-auto">

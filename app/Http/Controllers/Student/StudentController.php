@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Student;
 use App\Models\Room;
+use App\Models\Subject;
+use App\Models\Mark;
 
 class StudentController extends Controller
 {
@@ -318,7 +320,7 @@ class StudentController extends Controller
 
         if($classId == 13){
             $students->remark = 'B'.Carbon::now()->format('Y');
-            $students->class_id    = $classId;
+            $students->class_id = $classId;
             $students->update();
             return redirect()->back()->with('success', 'Student pass from "'.$students->room->name.'" this school.');
         }

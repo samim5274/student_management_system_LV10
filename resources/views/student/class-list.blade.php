@@ -38,7 +38,7 @@
             <div class="page-header mb-6">
                 <div class="page-block">
                     <div class="page-header-title">
-                        <h5 class="mb-1 font-semibold text-gray-800">Student Promossion Details</h5>
+                        <h5 class="mb-1 font-semibold text-gray-800">Student Migration Details</h5>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -56,20 +56,17 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($classes as $val)
                         @if($val->id != 13)
-                            <a href="{{url('/promossion/class/'.$val->id)}}" class="block group ">
+                            <a href="{{url('/migration/class/'.$val->id)}}" class="block group ">
                                 <div class="border border-gray-200 p-5 rounded-xl bg-white
                                             group-hover:-translate-y-2 group-hover:shadow-xl
                                             shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
                                     
                                     <!-- Header -->
                                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
-                                        
-                                        
                                         <!-- name -->
                                         <h3 class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">
                                             # {{ $val->name }}
                                         </h3>
-
                                         <!-- Class Badge -->
                                         <span class="px-3 py-1 text-lg font-medium rounded-full bg-green-100 text-green-700">
                                             {{ $val->section }}

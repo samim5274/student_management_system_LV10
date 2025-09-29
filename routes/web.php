@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\PromoteController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Subject\SubjectController;
@@ -38,9 +39,11 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/add-new-student', [StudentController::class, 'addStudent']);
     Route::get('/edit-student-view/{id}', [StudentController::class, 'editStudentView'])->name('student-edit-view');
     Route::post('/edit-student/{id}', [StudentController::class, 'editStudent']);
-    Route::get('/student/promossion', [StudentController::class, 'classList'])->name('promossion-class-list');
-    Route::get('/promossion/class/{class}', [StudentController::class, 'stdList'])->name('student-list-promossion');
+    Route::get('/student/migration', [StudentController::class, 'classList'])->name('migration-class-list');
+    Route::get('/migration/class/{class}', [StudentController::class, 'stdList'])->name('student-list-migration');
     Route::post('/update/student/class/{student}', [StudentController::class, 'updateStudent']);
+    
+    Route::get('/promote-class/{class_id}', [PromoteController::class, 'promoteClass']);
 
 
 

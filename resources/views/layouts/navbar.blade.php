@@ -230,7 +230,7 @@
                             </a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="{{url('/student/promossion')}}" class="pc-link">
+                            <a href="{{url('/student/migration')}}" class="pc-link">
                                 <span class="pc-micon"> <i class="fa-solid fa-up-down"></i></span>
                                 <span class="pc-mtext">Migration</span>
                             </a>

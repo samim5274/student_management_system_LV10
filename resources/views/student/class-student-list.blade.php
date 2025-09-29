@@ -38,11 +38,11 @@
             <div class="page-header mb-6">
                 <div class="page-block">
                     <div class="page-header-title">
-                        <h5 class="mb-1 font-semibold text-gray-800">Student Promossion Details</h5>
+                        <h5 class="mb-1 font-semibold text-gray-800">Student Migration Details</h5>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/student/promossion')}}">Class list</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/student/migration')}}">Class list</a></li>
                         <li class="breadcrumb-item" aria-current="page">Student list</li>
                     </ul>
                 </div>
@@ -58,6 +58,11 @@
                             Student: <span class="text-gray-700">{{ $students[0]->room->name ?? 'N/A' }}</span> 
                             (<span class="text-gray-700">{{ $students[0]->room->section ?? 'N/A' }}</span>)
                         </h2>
+                        @if($students->isNotEmpty())
+                        <a href="{{url('/promote-class/'.$students[0]->class_id ?? 'N/A')}}" class="px-4 py-3 text-md border border-gray-400 rounded-md bg-[#3F4D67] text-white hover:bg-[#54668a] transition-all duration-300">Update Student</a>
+                        @else
+                            <p class="text-red-500">No students found for promotion.</p>
+                        @endif
                     </div>
                 </div>
                 <div class="space-y-6 p-4">                    
@@ -83,7 +88,7 @@
                                 </div>
 
                                 <!-- Class Select -->
-                                <div class="sm:text-center">
+                                <!-- <div class="sm:text-center">
                                     <form action="{{ url('/update/student/class/'.$val->id) }}" method="POST" class="flex flex-col sm:flex-row gap-3 items-center justify-center">
                                         @csrf
                                         <input type="hidden" name="student_id" value="{{ $val->id }}">
@@ -102,7 +107,6 @@
                                             @endforeach
                                         </select>
 
-                                        <!-- Submit Button -->
                                         <button type="submit"
                                             class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white 
                                                 font-semibold text-sm px-4 py-2 rounded-lg transition duration-200 
@@ -110,7 +114,7 @@
                                             <i class="fa-solid fa-check"></i> Submit
                                         </button>
                                     </form>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     @endforeach

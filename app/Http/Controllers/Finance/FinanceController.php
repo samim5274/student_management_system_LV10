@@ -115,46 +115,148 @@ class FinanceController extends Controller
         return response()->json($feeStructures);
     }
 
+    // public function confirmPayment(Request $request){
+
+    //     $request->validate([ 
+    //         'student_id'      => 'required|exists:students,id', 
+    //         'fee_structure'   => 'required|array|min:1', 
+    //         'fee_structure.*' => 'exists:fee_structures,id', 
+    //         'amount_paid'     => 'required|numeric|min:0',
+    //         'discount'        => 'nullable|numeric|min:0',
+    //         'payment_method'  => 'required|string|in:Cash,Card,Bank Transfer,Mobile Banking', 
+    //     ]);
+
+    //     $month = Carbon::now()->format('m');
+    //     $year  = Carbon::now()->format('Y');
+
+    //     $feeStructures = FeeStructure::whereIn('id', $request->fee_structure)->get();
+
+    //     $totalAmount = $feeStructures->sum('amount');
+
+    //     $totalPaid     = $request->amount_paid;
+    //     $totalDiscount = $request->discount ?? 0;
+
+    //     foreach ($feeStructures as $feeStructure) {
+
+    //         $weight = $feeStructure->amount / $totalAmount;
+
+    //         $paidForThis = round($totalPaid * $weight, 2);
+    //         $discountForThis = round($totalDiscount * $weight, 2);
+    //         $dueForThis = $feeStructure->amount - $paidForThis - $discountForThis;
+
+    //         $existing = FeePayment::where('student_id', $request->student_id)
+    //                     ->where('fee_structure_id', $feeStructure->id)
+    //                     ->where('month', $month)
+    //                     ->where('year', $year)
+    //                     ->first();
+    //         if ($existing) {
+    //             return redirect()->back()->with('error', 'এই মাসের জন্য "' . $feeStructure->name . '" ফি ইতিমধ্যেই পেমেন্ট করা হয়েছে।');
+    //         }
+
+    //         $payment = new FeePayment();
+    //         $payment->student_id       = $request->student_id;
+    //         $payment->fee_structure_id = $feeStructure->id;
+    //         $payment->amount_paid      = $paidForThis;
+    //         $payment->discount         = $discountForThis;
+    //         $payment->due_amount       = $dueForThis;
+    //         $payment->month            = $month;
+    //         $payment->year             = $year;
+    //         $payment->payment_date     = $request->payment_date ?? now()->toDateString();
+    //         $payment->payment_method   = $request->payment_method ?? 'Cash';
+    //         $payment->status           = $dueForThis > 0 ? 'Due' : 'Paid';
+
+    //         do {
+    //             $receipt = strtoupper(Str::random(8));
+    //         } while (FeePayment::where('receipt_no', $receipt)->exists());
+
+    //         $payment->receipt_no = $receipt;
+    //         $payment->save();
+    //     }
+
+    //     return redirect()->back()->with('success', 'ফি পেমেন্ট সফলভাবে রেকর্ড করা হয়েছে!');
+    // }
+
     public function confirmPayment(Request $request){
 
         $request->validate([ 
             'student_id'      => 'required|exists:students,id', 
             'fee_structure'   => 'required|array|min:1', 
             'fee_structure.*' => 'exists:fee_structures,id', 
-            'amount_paid'     => 'required|numeric|min:0', 
+            'amount_paid'     => 'required|numeric|min:0',
+            'discount'        => 'nullable|numeric|min:0',
             'payment_method'  => 'required|string|in:Cash,Card,Bank Transfer,Mobile Banking', 
         ]);
 
-        foreach ($request->fee_structure as $feeStructureId) {
+        $month = Carbon::now()->format('m');
+        $year  = Carbon::now()->format('Y');
+
+        $feeStructures = FeeStructure::whereIn('id', $request->fee_structure)->get();
+        $totalFee = $feeStructures->sum('amount');
+
+        $paid = min($request->amount_paid, $totalFee);
+        $discount = $request->discount ?? 0;
+
+        $remaining = max($totalFee - $discount, 0);
+
+        $paid = min($paid, $remaining);
+
+        $due = max($remaining - $paid, 0);
+
+        $accPaid = 0;
+        $accDiscount = 0;
+        $accDue = 0;
+        $count = $feeStructures->count();
+        $i = 0;
+
+        foreach ($feeStructures as $feeStructure) {
+            $i++;
+
+            $weight = $feeStructure->amount / $totalFee;
+
+            $paidForThis = round($paid * $weight, 2);
+            $discountForThis = round($discount * $weight, 2);
+            $dueForThis = round($due * $weight, 2);
+
+            if ($i === $count) {
+                $paidForThis = $paid - $accPaid;
+                $discountForThis = $discount - $accDiscount;
+                $dueForThis = $due - $accDue;
+            }
 
             $existing = FeePayment::where('student_id', $request->student_id)
-                        ->where('fee_structure_id', $feeStructureId)
-                        ->first();
-            
+                ->where('fee_structure_id', $feeStructure->id)
+                ->where('month', $month)
+                ->where('year', $year)
+                ->first();
             if ($existing) {
-                return redirect()->back()->with('error', 'Payment already exists for this student and fee category.');
+                return redirect()->back()->with('error', $feeStructure->name . 'Fees for this month have already been paid.');
             }
 
             $payment = new FeePayment();
             $payment->student_id       = $request->student_id;
-            $payment->fee_structure_id = $feeStructureId;
-            $payment->amount_paid      = $request->amount_paid;
+            $payment->fee_structure_id = $feeStructure->id;
+            $payment->amount_paid      = $paidForThis;
+            $payment->discount         = $discountForThis;
+            $payment->due_amount       = $dueForThis > 0 ? $dueForThis : 0;
+            $payment->month            = $month;
+            $payment->year             = $year;
             $payment->payment_date     = $request->payment_date ?? now()->toDateString();
             $payment->payment_method   = $request->payment_method ?? 'Cash';
-            $payment->status           = 'Paid';
+            $payment->status           = $dueForThis > 0 ? 'Partial' : 'Paid';
 
-            // Generate Unique Receipt No
             do {
                 $receipt = strtoupper(Str::random(8));
             } while (FeePayment::where('receipt_no', $receipt)->exists());
-
             $payment->receipt_no = $receipt;
 
             $payment->save();
-        }
-        // $payment->save();
 
-        // dd($payment);
-        return redirect()->back()->with('success', 'Fee payment recorded successfully!');
+            $accPaid += $paidForThis;
+            $accDiscount += $discountForThis;
+            $accDue += $dueForThis;
+        }
+
+        return redirect()->back()->with('success', 'Fee payment has been recorded successfully!');
     }
+
 }

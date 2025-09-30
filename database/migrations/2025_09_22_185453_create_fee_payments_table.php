@@ -13,14 +13,22 @@ return new class extends Migration
     {
         Schema::create('fee_payments', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('student_id')->constrained('students')->onDelete('restrict');
             $table->foreignId('fee_structure_id')->constrained('fee_structures')->onDelete('restrict');
-            $table->decimal('amount_paid', 10, 2);
+
+            $table->decimal('amount_paid', 10, 2)->default(0);
+            $table->decimal('discount', 10, 2)->default(0);
+            $table->decimal('due_amount', 10, 2)->default(0);
+
             $table->date('payment_date');
+            $table->integer('month');
+            $table->integer('year');
+
             $table->string('payment_method')->default('Cash');
             $table->string('status')->default('Pending');
             $table->string('receipt_no')->nullable();
-
+            
             $table->timestamps();
         });
     }

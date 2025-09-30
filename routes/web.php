@@ -39,10 +39,10 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/add-new-student', [StudentController::class, 'addStudent']);
     Route::get('/edit-student-view/{id}', [StudentController::class, 'editStudentView'])->name('student-edit-view');
     Route::post('/edit-student/{id}', [StudentController::class, 'editStudent']);
-    Route::get('/student/migration', [StudentController::class, 'classList'])->name('migration-class-list');
-    Route::get('/migration/class/{class}', [StudentController::class, 'stdList'])->name('student-list-migration');
-    Route::post('/update/student/class/{student}', [StudentController::class, 'updateStudent']);
-    
+
+    Route::get('/student/migration', [PromoteController::class, 'classList'])->name('migration-class-list');
+    Route::get('/migration/class/{class}', [PromoteController::class, 'stdList'])->name('student-list-migration');
+    Route::post('/update/student/class/{student}', [PromoteController::class, 'updateStudent']);    
     Route::get('/promote-class/{class_id}', [PromoteController::class, 'promoteClass']);
 
 

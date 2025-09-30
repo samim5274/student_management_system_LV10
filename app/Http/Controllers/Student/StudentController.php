@@ -296,41 +296,6 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Student information edited successfully!');
     }
 
-    public function classList(){
-        $classes = Room::all();
-        return view('student.class-list', compact('classes'));
-    }
-
-    public function stdList($class){
-        $students = Student::where('class_id', $class)->get();
-        $classes = Room::all();
-        return view('student.class-student-list', compact('students','classes'));
-    }
-
-    public function updateStudent(Request $request, $student){
-        
-        $students = Student::where('id', $student)->first();
-
-        if (!$students) {
-            return redirect()->back()->with('error', 'Selected student not found. Please try another!');
-        }
-
-        $classId = $request->class_id;
-        $rollNo = $request->roll;
-
-        if($classId == 13){
-            $students->remark = 'B'.Carbon::now()->format('Y');
-            $students->class_id = $classId;
-            $students->update();
-            return redirect()->back()->with('success', 'Student pass from "'.$students->room->name.'" this school.');
-        }
-
-        $students->class_id    = $classId;
-        $students->roll_number = $rollNo;
-
-        $students->update();
-
-        return redirect()->back()->with('success', 'Selected student to "'.$students->room->name.'" class updated successfully.');
-    }
+    
 
 }

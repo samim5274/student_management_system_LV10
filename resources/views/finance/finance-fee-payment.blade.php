@@ -89,7 +89,7 @@
                                 <option disabled selected>-- Select Student --</option>
                                 <!-- Populate dynamically -->
                                  @foreach($student as $std)
-                                 <option value="1">{{$std->first_name}} {{$std->last_name}}</option>
+                                 <option value="{{$std->id}}">{{$std->first_name}} {{$std->last_name}}</option>
                                  @endforeach
                             </select>
                         </div>
@@ -142,6 +142,11 @@
                             <label for="amount_paid" class="block text-sm font-medium text-gray-700 mb-2">Amount Paid <span class="text-red-500">*</span></label>
                             <input type="number" name="amount_paid" id="amount_paid" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="Enter amount" min="1" required>
                         </div>
+                        <!-- Discount -->
+                        <div class="mb-4">
+                            <label for="discount" class="block text-sm font-medium text-gray-700 mb-2">Discount</label>
+                            <input type="number" name="discount" id="discount" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="Enter discount" value="0">
+                        </div>
                     </div>
 
                     <!-- Buttons -->
@@ -160,23 +165,36 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th>#</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fee Structure</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount Paid</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment Date</th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Actions</span>
-                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fee Structure</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Amount Paid</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Discount</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Due</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Payment Date</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach($feePayment as $val)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$val->student->first_name}} {{$val->student->last_name}}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$val->feeStructure->category->name}}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$val->feeStructure->amount}}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$val->payment_date}}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{ $val->student->first_name }} {{ $val->student->last_name }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $val->feeStructure->category->name }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ number_format($val->amount_paid, 2) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-500 font-semibold">
+                                    {{ number_format($val->discount, 2) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500 font-semibold">
+                                    {{ number_format($val->due_amount, 2) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ \Carbon\Carbon::parse($val->payment_date)->format('d M Y') }}
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -188,12 +206,12 @@
 
                         {{-- Previous Button --}}
                         @if ($feePayment->onFirstPage())
-                            <span class="px-4 py-2 text-sm md:text-base bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
-                                &laquo; Previous
+                            <span class="px-2 py-1 text-sm md:text-base bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
+                                &laquo;
                             </span>
                         @else
-                            <a href="{{ $feePayment->previousPageUrl() }}" class="px-4 py-2 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
-                                &laquo; Previous
+                            <a href="{{ $feePayment->previousPageUrl() }}" class="px-2 py-1 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                                &laquo;
                             </a>
                         @endif
 
@@ -205,20 +223,20 @@
 
                         @for ($i = $start; $i <= $end; $i++)
                             @if ($i == $feePayment->currentPage())
-                                <span class="px-4 py-2 text-sm md:text-base bg-theme-bg-1 text-white rounded-lg">{{ $i }}</span>
+                                <span class="px-2 py-1 text-sm md:text-base bg-[#3F4D67] text-white rounded-lg">{{ $i }}</span>
                             @else
-                                <a href="{{ $feePayment->url($i) }}" class="px-4 py-2 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">{{ $i }}</a>
+                                <a href="{{ $feePayment->url($i) }}" class="px-2 py-1 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">{{ $i }}</a>
                             @endif
                         @endfor
 
                         {{-- Next Button --}}
                         @if ($feePayment->hasMorePages())
-                            <a href="{{ $feePayment->nextPageUrl() }}" class="px-4 py-2 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
-                                Next &raquo;
+                            <a href="{{ $feePayment->nextPageUrl() }}" class="px-2 py-1 text-sm md:text-base bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                                 &raquo;
                             </a>
                         @else
-                            <span class="px-4 py-2 text-sm md:text-base bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
-                                Next &raquo;
+                            <span class="px-2 py-1 text-sm md:text-base bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
+                                 &raquo;
                             </span>
                         @endif
                     </div>
@@ -319,6 +337,7 @@
                 const totalAmountInput = document.getElementById('total_amount');
                 const amountPaidInput = document.getElementById('amount_paid');
                 const dueAmountInput = document.getElementById('due_amount');
+                const discountInput = document.getElementById('discount');
 
                 function calculateTotal() {
                     let total = 0;
@@ -334,7 +353,8 @@
                 function calculateDue() {
                     const total = parseFloat(totalAmountInput.value) || 0;
                     const paid = parseFloat(amountPaidInput.value) || 0;
-                    const due = total - paid;
+                    const discount = parseFloat(discountInput.value) || 0;
+                    const due = total - paid - discount;
                     dueAmountInput.value = due.toFixed(2);
                 }
 
@@ -352,6 +372,7 @@
                 });
 
                 amountPaidInput.addEventListener('input', calculateDue);
+                discountInput.addEventListener('input', calculateDue);
 
                 calculateTotal(); // Initial calculation
             }

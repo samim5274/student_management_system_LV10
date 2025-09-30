@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('html').hasAttribute('data-pc-layout')) {
     if (document.querySelector('html').getAttribute('data-pc-layout') == 'horizontal') {
       var docW = window.innerWidth;
-      if (docW <= 1024) {
+      if(docW <= 1024){
         add_scroller();
       }
     }

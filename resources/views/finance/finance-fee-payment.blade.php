@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
     <title>Fee Payment - (SMS)</title>
 
     <!-- Fonts -->
@@ -16,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" />
+    <link rel="stylesheet" href="{{ asset('plugins/simplebar.min.css') }}">
+
     
 </head>
 
@@ -96,12 +99,12 @@
                     <!-- Fee Structure -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Fee Structure <span class="text-red-500">*</span></label>
-                        <div id="fee-structure-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div id="fee-structure-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach($feeStructure as $fs)
-                            <div class="flex items-center p-3 border rounded-lg hover:bg-gray-50">
-                                <input type="checkbox" name="fee_structure[]" value="{{ $fs->id }}" data-amount="{{ $fs->amount }}" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500 fee-checkbox">
-                                <label for="fee_structure_{{ $fs->id }}" class="ml-3 block text-sm font-medium text-gray-700">
-                                    {{$fs->category->name}} ( {{$fs->room->name}} ) - ${{ number_format($fs->amount, 2) }}
+                            <div class="fee-item bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200 ease-in-out flex items-center">
+                                <input type="checkbox" name="fee_structure[]" value="{{ $fs->id }}" data-amount="{{ $fs->amount }}" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500 fee-checkbox cursor-pointer">
+                                <label for="fee_structure_{{ $fs->id }}" class="ml-3 block text-base font-medium text-gray-800 flex-grow cursor-pointer">
+                                    <span class="text-green-700"> {{$fs->category->name}}</span> ({{$fs->room->name}}) - <span class="font-semibold">${{ number_format($fs->amount, 2) }}</span>
                                 </label>
                             </div>
                             @endforeach
@@ -144,7 +147,7 @@
                     <!-- Buttons -->
                     <div class="flex justify-end space-x-3">
                         <!-- <a href="{{ url('/fee-payments') }}" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">Cancel</a> -->
-                        <button type="submit" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">Save Payment</button>
+                        <button type="submit" class="px-5 py-2 bg-green-600 text-black rounded-lg shadow hover:bg-green-700 transition">Save Payment</button>
                     </div>
                 </form>
             </div>
@@ -294,11 +297,11 @@
                         feeStructureContainer.innerHTML = '';
                         data.forEach(fs => {
                             const feeStructure = document.createElement('div');
-                            feeStructure.className = 'flex items-center p-3 border rounded-lg hover:bg-gray-50';
+                            feeStructure.className = 'fee-item bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200 ease-in-out flex items-center';
                             feeStructure.innerHTML = `
-                                <input type="checkbox" name="fee_structure[]" value="${fs.id}" data-amount="${fs.amount}" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500 fee-checkbox">
-                                <label for="fee_structure_${fs.id}" class="ml-3 block text-sm font-medium text-gray-700">
-                                    ${fs.category.name} (${fs.room.name}) - $${parseFloat(fs.amount).toFixed(2)}
+                                <input type="checkbox" name="fee_structure[]" value="${fs.id}" data-amount="${fs.amount}" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500 fee-checkbox cursor-pointer">
+                                <label for="fee_structure_${fs.id}" class="ml-3 block text-base font-medium text-gray-800 flex-grow cursor-pointer">
+                                    <span class="text-green-700">${fs.category.name}</span> (${fs.room.name}) - <span class="font-semibold">$${parseFloat(fs.amount).toFixed(2)}</span>
                                 </label>
                             `;
                             feeStructureContainer.appendChild(feeStructure);
@@ -337,6 +340,13 @@
 
                 feeStructureContainer.addEventListener('change', function(e) {
                     if (e.target.classList.contains('fee-checkbox')) {
+                        const checkbox = e.target;
+                        const feeItem = checkbox.closest('.fee-item');
+                        if (checkbox.checked) {
+                            feeItem.classList.add('selected-fee-item');
+                        } else {
+                            feeItem.classList.remove('selected-fee-item');
+                        }
                         calculateTotal();
                     }
                 });

@@ -50,7 +50,7 @@
             </div>
 
             <!-- search section -->
-             <div class="card rounded-md border shadow-md">
+            <div class="card rounded-md border shadow-md">
                 <div class="card-body">
                     @php
                         $today = date('Y-m-d');

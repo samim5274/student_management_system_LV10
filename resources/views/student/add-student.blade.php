@@ -87,10 +87,10 @@
                                             <div>
                                                 <label class="block text-gray-600 mb-1" for="gender">Gender</label>
                                                 <select id="gender" name="gender" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-                                                <option  disabled>--Select Gender--</option>
-                                                <option selected value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Other">Other</option>
+                                                    <option  disabled>--Select Gender--</option>
+                                                    <option selected value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
 

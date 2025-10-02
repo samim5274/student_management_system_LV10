@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\PromoteController;
+use App\Http\Controllers\Student\StudentReportController;
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\TeacherReportController;
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Exam\ExamController;
@@ -14,6 +16,7 @@ use App\Http\Controllers\Enrollment\EntrollmentController;
 use App\Http\Controllers\StudentPortal\StudentPortalController;
 use App\Http\Controllers\Room\ClassController;
 use App\Http\Controllers\Finance\FinanceController;
+use App\Http\Controllers\Finance\FinanceReportController;
 
 Auth::routes();
 
@@ -45,6 +48,9 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/update/student/class/{student}', [PromoteController::class, 'updateStudent']);    
     Route::get('/promote-class/{class_id}', [PromoteController::class, 'promoteClass']);
 
+    Route::get('/student-report', [StudentReportController::class, 'genderReport'])->name('gender-wise-student-report-view');
+    Route::get('/find-gender-wise-student', [StudentReportController::class, 'findGenderReport']);
+
 
 
 
@@ -54,6 +60,8 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/add-new-teacher', [TeacherController::class, 'addTeacher']);
     Route::get('/edit-teacher-view/{id}', [TeacherController::class, 'editTeacherView'])->name('teacher-edit-view');
     Route::post('/edit-teacher/{id}', [TeacherController::class, 'editTeacher']);
+
+    Route::get('/teacher-report', [TeacherReportController::class, 'teacherReport'])->name('teacher-report');
 
 
 
@@ -135,6 +143,14 @@ Route::group(['middleware' => ['admin']], function(){
 
     Route::get('/students/{class_id}', [FinanceController::class, 'getStudentsByClass']);
     Route::get('/fee-structures/{class_id}', [FinanceController::class, 'getFeeStructuresByClass']);
+
+    Route::get('/student-finance-report', [FinanceReportController::class, 'studentFinanceReport'])->name('student-finance-report-view');
+    Route::get('/find-payment-report', [FinanceReportController::class, 'findPaymentReport']);
+    Route::get('/category-class-finance-report', [FinanceReportController::class, 'categroyReport'])->name('category-finance-report');
+    Route::get('/find-category-payment-report', [FinanceReportController::class, 'findCategoryFeeReport']);
+    Route::get('/student-wise-payment-report', [FinanceReportController::class, 'studentFeeReport'])->name('student-fee-report');
+    Route::get('/find-student-fee-payment', [FinanceReportController::class, 'findStudentFeeReport']);
+
 
 
 

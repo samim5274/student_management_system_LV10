@@ -56,10 +56,10 @@
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
                     class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#!">Gender Report's</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Class Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{ url('/student-report') }}">Student Report's</a></li>
+                        <!-- <li class="pc-item"><a class="pc-link" href="#!">Class Report's</a></li>
                         <li class="pc-item"><a class="pc-link" href="#!">Section Report's</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Status</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#!">Status</a></li> -->
                     </ul>
                 </li>
                 <!-- Student section End -->
@@ -88,8 +88,7 @@
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
                     class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#!">Gender Report's</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Status</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/teacher-report')}}">Teacher Report's</a></li>
                     </ul>
                 </li>
                 <!-- Teachers section End -->
@@ -127,7 +126,7 @@
                         <li class="pc-item"><a class="pc-link" href="#"> <span class="pc-micon"> <i data-feather="feather"></i>  </span><span class="pc-mtext">Assignments</span></a></li>
                     </ul>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
                     class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
@@ -135,7 +134,7 @@
                         <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
                         <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- Classes & Sections start  -->
 
 
@@ -212,6 +211,12 @@
                     class="pc-mtext">Exam's & Result's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                         <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/create-exam')}}" class="pc-link">
+                                <span class="pc-micon"> <i data-feather="edit"></i></span>
+                                <span class="pc-mtext">Create Exams</span>
+                            </a>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
                             <a href="{{url('/exam-management')}}" class="pc-link">
                                 <span class="pc-micon"> <i class="fa-solid fa-vial-virus"></i></span>
                                 <span class="pc-mtext">Exam Management</span>
@@ -247,15 +252,10 @@
                                 <span class="pc-mtext">Total Result</span>
                             </a>
                         </li>   
-                        <li class="pc-item pc-hasmenu">
-                            <a href="{{url('/create-exam')}}" class="pc-link">
-                                <span class="pc-micon"> <i data-feather="edit"></i></span>
-                                <span class="pc-mtext">Create Exams</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
                     class="pc-mtext">Report's</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
@@ -263,7 +263,7 @@
                         <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
                         <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
                 <!-- Exam & Result end -->
 
@@ -302,9 +302,9 @@
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
                     class="pc-mtext">Finance Report</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#">Student Report's</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#">Category Report's</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#">Total Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/student-finance-report')}}">Student Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/category-class-finance-report')}}">Category Report's</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{url('/student-wise-payment-report')}}">Student Wise Report's</a></li>
                     </ul>
                 </li>
                 <!-- Account End -->

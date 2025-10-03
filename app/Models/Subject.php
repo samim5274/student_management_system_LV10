@@ -29,4 +29,8 @@ class Subject extends Model
         return $this->hasMany(Mark::class, 'subject_id');
     }
 
+    public function classSchedule() {
+        return $this->hasMany(ClassSchedule::class);
+    }
+
 }

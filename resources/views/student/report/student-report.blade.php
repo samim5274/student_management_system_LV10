@@ -57,7 +57,7 @@
                     @endphp
 
                     <form action="{{url('/find-gender-wise-student')}}" method="GET" class="p-4" id="filter-form">
-                        <div class="grid md:grid-cols-5 gap-6">                           
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">                           
 
                             <div class="flex flex-col">
                                 <label for="gender_id" class="text-sm font-medium text-gray-700 mb-1">Gender</label>

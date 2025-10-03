@@ -24,7 +24,7 @@ class ExamController extends Controller
     }
 
     public function viewExam(){
-        $exams = Exam::with('room', 'subject')->get();
+        $exams = Exam::with('room', 'subject')->orderBy('date', 'asc')->get();
         $subjects = Subject::all();
         $rooms = Room::all();
         $examName = ExamName::all();
@@ -45,6 +45,15 @@ class ExamController extends Controller
             return redirect()->back()->with('warning', 'This exam already exists for this date, class and subject. Please try another!');
         }
 
+        $exists = Exam::where('class_id', $request->class_id)
+            ->where('subject_id', $request->subject_id)
+            ->where('id', '!=', $exam_id) 
+            ->exists();
+
+        if ($exists) {
+            return redirect()->back()->with('warning', 'This subject already has an exam in this class. Duplicate not allowed!');
+        }
+
         $exam = new Exam();
         // Exam Info
         $exam->name       = $request->name;
@@ -56,6 +65,46 @@ class ExamController extends Controller
         $exam->save();
 
         return redirect()->back()->with('success', 'Exam added successfully!');
+    }
+
+    public function modifyExam(Request $request, $exam_id){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'class_id' => 'required|exists:rooms,id',
+            'subject_id' => 'required|exists:subjects,id',
+            'max_marks' => 'required|numeric',
+        ]);
+
+        $exists = Exam::where('name', $request->name)->where('date', $request->date)->where('class_id', $request->class_id)->where('subject_id', $request->subject_id)->exists();
+
+        if ($exists) {
+            return redirect()->back()->with('warning', 'This exam already exists for this date, class and subject. Please try another!');
+        }
+
+        $exists = Exam::where('class_id', $request->class_id)
+            ->where('subject_id', $request->subject_id)
+            ->where('id', '!=', $exam_id) 
+            ->exists();
+
+        if ($exists) {
+            return redirect()->back()->with('warning', 'This subject already has an exam in this class. Duplicate not allowed!');
+        }
+
+        // Find exam
+        $findData = Exam::where('id', $exam_id)->first();
+
+        if($findData){
+            // Exam Info
+            $findData->name       = $request->name;
+            $findData->date       = $request->date;
+            $findData->class_id   = $request->class_id;
+            $findData->subject_id = $request->subject_id;
+            $findData->max_marks  = $request->max_marks;
+            $findData->update();
+            return redirect()->back()->with('success', 'Exam update successfully!');
+        }
+
+        
     }
 
 

@@ -114,16 +114,30 @@
                     <a href="#!" class="pc-link"><span class="pc-micon"> <i class="fa-solid fa-list-check"></i> </span><span
                     class="pc-mtext">Classes Details</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="{{url('/add-class')}}"> <span class="pc-micon"> <i data-feather="edit"></i>  </span><span class="pc-mtext">Add New Class</span></a></li>
-                        <li class="pc-item"><a class="pc-link" href="{{url('/class-details')}}"> <span class="pc-micon"> <i class="fa-solid fa-address-card"></i> </span><span class="pc-mtext">Class List</span></a></li>
-                        <li class="pc-item"><a class="pc-link" href="#"> <span class="pc-micon"> <i class="fa-solid fa-business-time"></i>  </span><span class="pc-mtext">Class Schedule</span></a></li>                        
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{url('/add-class')}}"> 
+                                <span class="pc-micon"> <i data-feather="edit"></i></span>
+                                <span class="pc-mtext">Add New Class</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{url('/class-details')}}"> 
+                                <span class="pc-micon"> <i class="fa-solid fa-address-card"></i> </span>
+                                <span class="pc-mtext">Class List</span>
+                            </a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{url('/class-schedule')}}"> 
+                                <span class="pc-micon"> <i class="fa-solid fa-business-time"></i>  </span>
+                                <span class="pc-mtext">Class Schedule</span>
+                            </a>
+                        </li>                        
                         <li class="pc-item pc-hasmenu">
                             <a href="{{url('/assign-teacher-list')}}" class="pc-link">
                                 <span class="pc-micon"> <i class="fa-solid fa-user-plus"></i></span>
                                 <span class="pc-mtext">Assign Teachers</span>
                             </a>
                         </li>
-                        <li class="pc-item"><a class="pc-link" href="#"> <span class="pc-micon"> <i data-feather="feather"></i>  </span><span class="pc-mtext">Assignments</span></a></li>
                     </ul>
                 </li>
                 <!-- <li class="pc-item pc-hasmenu">

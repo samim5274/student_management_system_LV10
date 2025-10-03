@@ -88,6 +88,7 @@ Route::group(['middleware' => ['admin']], function(){
 
     Route::get('/subject-view', [SubjectController::class, 'subjectView'])->name('subject-vidw');
     Route::post('/add-new-subject', [SubjectController::class, 'addSubject']);
+    Route::get('/get-subjects/{classId}', [SubjectController::class, 'getSubjectsByClass']);
 
 
 
@@ -104,6 +105,7 @@ Route::group(['middleware' => ['admin']], function(){
 
     Route::get('/exam-management', [ExamController::class, 'viewExam'])->name('exam-details-view');
     Route::post('/add-new-exam', [ExamController::class, 'addExam']);
+    Route::post('/modify-exam/{exam_id}', [ExamController::class, 'modifyExam']);
     Route::get('/exam-class-list', [ExamController::class, 'classList'])->name('result-entry-class-view');
     Route::get('/class/exam/{class}', [ExamController::class, 'examView'])->name('class-exam-select');
     Route::get('/class/subject/exam/{class}/{subject}/{exam}', [ExamController::class, 'classExam'])->name('class-exam-view');
@@ -124,6 +126,8 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/insert-class', [ClassController::class, 'insertClass']);
     Route::get('/assign-teacher-list', [ClassController::class, 'assignTeacehr'])->name('assign-teacher-list-view');
     Route::post('/assigned-teacher-update', [ClassController::class, 'update']);
+    Route::get('/class-schedule', [ClassController::class, 'classSchedule'])->name('class-schedule-view');
+    Route::post('/submit-class-schedule', [ClassController::class, 'store']);
 
 
 

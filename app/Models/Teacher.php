@@ -43,4 +43,8 @@ class Teacher extends Authenticatable
     {
         return $this->hasMany(Room::class, 'class_teacher_id', 'id');
     }
+
+    public function classSchedule() {
+        return $this->hasMany(ClassSchedule::class);
+    }
 }

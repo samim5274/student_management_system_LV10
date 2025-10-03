@@ -13,6 +13,7 @@ use App\Models\Teacher;
 use App\Models\Exam;
 use App\Models\Mark;
 use App\Models\StudentSubject;
+use App\Models\ClassSchedule;
 
 class ClassController extends Controller
 {
@@ -84,5 +85,66 @@ class ClassController extends Controller
         $class->update();
 
         return redirect()->back()->with('success', 'Teacher updated successfully!');
+    }
+
+    public function classSchedule(){
+        
+        $teachers = Teacher::all();
+        $subjects = Subject::all();
+        $classes  = Room::all();
+        $days     = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
+        $schedules = ClassSchedule::all();
+        return view('room.schedule.class-schedule', compact('classes','teachers','subjects','classes','days','schedules'));
+    }
+
+    public function store(Request $request) {
+        $request->validate([
+            'class_id'    => 'required|exists:rooms,id',
+            'day'         => 'required|string',
+            'teacher'     => 'required|array|size:8',
+            'subject'     => 'required|array|size:8',
+            'start_time'  => 'required|array|size:8',
+            'end_time'    => 'required|array|size:8',
+        ]);
+
+        for($i=0; $i<8; $i++) {
+            $teacher_id = $request->teacher[$i];
+            $period     = $i+1;
+            $day        = $request->day;
+            $class_id   = $request->class_id;
+
+            // Teacher conflict check
+            $teacherConflict = ClassSchedule::where('teacher_id', $teacher_id)
+                ->where('day', $day)
+                ->where('period', $period)
+                ->exists();
+
+            if($teacherConflict) {
+                return redirect()->back()->with('error', "Teacher assigned in period {$period} already. Please choose another teacher.");
+            }
+
+            // Class conflict check (optional, DB constraint exists)
+            $classConflict = ClassSchedule::where('class_id', $class_id)
+                ->where('day', $day)
+                ->where('period', $period)
+                ->exists();
+
+            if($classConflict) {
+                return redirect()->back()->with('error', "Class already has a subject in period {$period} on {$day}.");
+            }
+
+            // Save schedule
+            $schedule = new ClassSchedule();
+            $schedule->class_id = $class_id;
+            $schedule->day = $day;
+            $schedule->period = $period;
+            $schedule->teacher_id = $teacher_id;
+            $schedule->subject_id = $request->subject[$i];
+            $schedule->start_time = $request->start_time[$i];
+            $schedule->end_time = $request->end_time[$i];
+            $schedule->save();            
+        }
+
+        return redirect()->back()->with('success', 'Class schedule created successfully!');
     }
 }

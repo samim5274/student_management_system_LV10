@@ -33,7 +33,7 @@ class StudentReportController extends Controller
         }
 
         if ($request->filled('class_id')) {
-            $query->where('room_id', $request->class_id);
+            $query->where('class_id', $request->class_id);
         }
 
         if ($request->filled('status')) {

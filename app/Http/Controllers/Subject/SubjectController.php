@@ -42,4 +42,10 @@ class SubjectController extends Controller
 
         return redirect()->back()->with('success', 'Subject added successfully!');
     }
+
+    public function getSubjectsByClass($classId)
+    {
+        $subjects = Subject::where('class_id', $classId)->get();
+        return response()->json($subjects);
+    }
 }

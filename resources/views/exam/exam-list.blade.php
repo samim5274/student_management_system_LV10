@@ -174,7 +174,7 @@
                             </div>
 
                             <!-- Modal Body (Your Form) -->
-                            <form action="{{url('/modify-exam')}}" method="POST" class="space-y-6" enctype="multipart/form-data">
+                            <form action="{{url('/modify-exam/'.$val->id)}}" method="POST" class="space-y-6" enctype="multipart/form-data">
                                 @csrf
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>

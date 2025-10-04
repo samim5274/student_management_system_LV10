@@ -160,5 +160,11 @@ Route::group(['middleware' => ['admin']], function(){
 
     // ======================================================= student portal routes =======================================================
     Route::get('/student-dashboard', [StudentPortalController::class, 'stdDashboard'])->name('student-dashboard');
+    Route::get('/student-profile', [StudentPortalController::class, 'profile'])->name('student-profile-view');
+    Route::get('/my-class', [StudentPortalController::Class, 'myClass'])->name('student-class-view');
+    Route::get('/student-attendance', [StudentPortalController::class, 'attendance'])->name('student-attendance-view');
+    Route::get('/get-student-attendace', [StudentPortalController::class, 'getAttedance']);
+    Route::get('/student-exam-list', [StudentPortalController::class, 'examList'])->name('student-exam-list');
+    Route::get('/student-results', [StudentPortalController::class, 'results'])->name('student-result');
 
 });

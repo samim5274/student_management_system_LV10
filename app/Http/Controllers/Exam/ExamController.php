@@ -47,7 +47,7 @@ class ExamController extends Controller
 
         $exists = Exam::where('class_id', $request->class_id)
             ->where('subject_id', $request->subject_id)
-            ->where('id', '!=', $exam_id) 
+            ->where('date', $request->date) 
             ->exists();
 
         if ($exists) {

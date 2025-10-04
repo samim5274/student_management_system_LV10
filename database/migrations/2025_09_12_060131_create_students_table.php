@@ -57,6 +57,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('father_photo')->nullable();
             $table->string('mother_photo')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
 

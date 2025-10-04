@@ -39,6 +39,15 @@ class Teacher extends Authenticatable
         'remark',
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'dob' => 'date',
+    ];
+
     public function rooms()
     {
         return $this->hasMany(Room::class, 'class_teacher_id', 'id');

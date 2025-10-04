@@ -353,7 +353,7 @@
                     </a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="{{url('/register')}}" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="user-plus"></i></span>
                         <span class="pc-mtext">Register</span>
                     </a>

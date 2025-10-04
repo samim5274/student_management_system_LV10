@@ -40,23 +40,23 @@ class AdminController extends Controller
 
         switch($role){
             case 1: // teacher
-                if (Auth::guard('teacher')->attempt($credentials)) {
+                if (Auth::guard('teacher')->attempt($credentials, $remember)) {
                     $request->session()->regenerate();
                     return redirect('/')->with('success', 'Login successful!');
                 } else {
-                    return redirect()->back()->with('error','Invalid teacher credentials.');
+                    return redirect()->back()->withErrors(['txtUsername' => 'Invalid teacher credentials.']);
                 }
                 break;
             case 2: // student
-                if (Auth::guard('student')->attempt($credentials)) {
+                if (Auth::guard('student')->attempt($credentials, $remember)) {
                     $request->session()->regenerate();
                     return redirect('/student-dashboard')->with('success', 'Login successful!');
                 } else {
-                    return redirect()->back()->with('error','Invalid student credentials.');
+                    return redirect()->back()->withErrors(['txtUsername' => 'Invalid student credentials.']);
                 }
                 break;
             default:
-                return redirect()->back()->with('error', 'Invalid role selected.');
+                return redirect()->back()->withErrors(['cbxRole' => 'Invalid role selected.']);
                 break;
         }
     }

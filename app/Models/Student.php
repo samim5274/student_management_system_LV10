@@ -56,6 +56,16 @@ class Student extends Authenticatable
         'mother_photo',
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'dob' => 'date',
+        'attend_date' => 'date',
+    ];
+
     public function room()
     {
         return $this->belongsTo(Room::class, 'class_id', 'id');

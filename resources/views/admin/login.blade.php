@@ -63,7 +63,7 @@
                 </div>
                 <div class="flex mt-1 justify-between items-center flex-wrap">
                   <div class="form-check">
-                    <input class="form-check-input input-primary" type="checkbox" id="rememberMe" name="cbxRemember" />
+                    <input class="form-check-input input-primary" checked type="checkbox" id="rememberMe" name="cbxRemember" />
                     <label class="form-check-label text-muted" for="rememberMe">Remember me?</label>
                   </div>
                   <h6 class="font-normal text-primary-500 mb-0">

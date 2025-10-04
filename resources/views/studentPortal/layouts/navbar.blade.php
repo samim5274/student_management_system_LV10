@@ -5,150 +5,113 @@
     </div>
 </div>
 <!-- [ Pre-loader ] End -->
+
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
         <div class="m-header flex items-center py-4 px-6 h-header-height">
             <a href="{{url('/student-dashboard')}}" class="b-brand flex items-center gap-3">
-                <!-- ========   Change your logo from here   ============ -->
                 <img src="{{asset('assets/images/logo-white.svg')}}" class="img-fluid logo logo-lg" alt="logo" />
                 <img src="{{asset('assets/images/favicon.svg')}}" class="img-fluid logo logo-sm" alt="logo" />
             </a>
         </div>
         <div class="navbar-content h-[calc(100vh_-_74px)] py-2.5 overflow-y-auto">
             <ul class="pc-navbar">
+
+                <!-- Dashboard -->
                 <li class="pc-item pc-caption">
                     <label>Navigation</label>
                 </li>
                 <li class="pc-item">
                     <a href="{{url('/student-dashboard')}}" class="pc-link">
-                        <span class="pc-micon">
-                        <i data-feather="home"></i>
-                        </span>
+                        <span class="pc-micon"><i data-feather="home"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
 
-
-                <!-- Student section start -->
+                <!-- Profile -->
                 <li class="pc-item pc-caption">
-                    <label>Students</label>
-                    <i data-feather="feather"></i>
+                    <label>Profile</label>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Subject</span>
+                <li class="pc-item">
+                    <a href="{{url('/student-profile')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-user"></i></span>
+                        <span class="pc-mtext">My Profile</span>
                     </a>
                 </li>
-                
-                <!-- Student section End -->
 
-                <!-- Teachers section start -->
+                <!-- Classes & Schedule -->
                 <li class="pc-item pc-caption">
-                    <label>Teachers</label>
-                    <i data-feather="feather"></i>
+                    <label>Classes & Schedule</label>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item">
                     <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Teacher List</span>
+                        <span class="pc-micon"><i class="fa-solid fa-list-check"></i></span>
+                        <span class="pc-mtext">My Class</span>
                     </a>
-                </li>
-                <!-- Teachers section End -->
-
-                <!-- Classes & Sections start  -->
-                <li class="pc-item pc-caption">
-                    <label>Classes & Sections</label>
-                    <i data-feather="feather"></i>
-                </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
+                </li> -->
+                <li class="pc-item">
+                    <a href="{{url('/my-class')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-business-time"></i></span>
                         <span class="pc-mtext">Class Schedule</span>
                     </a>
                 </li>
-                <!-- Classes & Sections start  -->
 
-
-                <!-- Attendance start -->
+                <!-- Attendance -->
                 <li class="pc-item pc-caption">
                     <label>Attendance</label>
-                    <i data-feather="feather"></i>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="feather"></i></span>
-                        <span class="pc-mtext">Attendance Records</span>
+                <li class="pc-item">
+                    <a href="{{url('/student-attendance')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-clipboard-user"></i></span>
+                        <span class="pc-mtext">My Attendance</span>
                     </a>
                 </li>
-                <!-- Attendance end -->
 
-
-                <!-- Exam & Result start -->
+                <!-- Exam & Result -->
                 <li class="pc-item pc-caption">
-                    <label>Exam & Result</label>
-                    <i data-feather="feather"></i>
+                    <label>Exam & Results</label>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Enrollment</span>
+                <li class="pc-item">
+                    <a href="{{url('/student-exam-list')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-book-open"></i></span>
+                        <span class="pc-mtext">Exam List</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Result</span>
+                <li class="pc-item">
+                    <a href="{{url('/student-results')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="pc-mtext">My Results</span>
                     </a>
                 </li>
-                <!-- Exam & Result end -->
 
-                <!-- Account Start -->
+                <!-- Fees & Payments -->
                 <li class="pc-item pc-caption">
-                    <label>Fees & Finance Account</label>
-                    <i data-feather="feather"></i>
+                    <label>Fees & Finance</label>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Fee Structure Setup</span>
+                <li class="pc-item">
+                    <a href="{{url('/student-fee-details')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-money-bill"></i></span>
+                        <span class="pc-mtext">My Fees</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon"> <i data-feather="edit"></i></span>
-                        <span class="pc-mtext">Fee Status / Pending Fees</span>
+                <li class="pc-item">
+                    <a href="{{url('/student-payment-history')}}" class="pc-link">
+                        <span class="pc-micon"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                        <span class="pc-mtext">Payment History</span>
                     </a>
                 </li>
-                <!-- <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link"><span class="pc-micon"> <i data-feather="align-right"></i> </span><span
-                    class="pc-mtext">Financial Reports</span><span class="pc-arrow"><i class="ti ti-chevron-right"></i></span></a>
-                    <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#!">Daily</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Monthly</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#!">Yearly</a></li>
-                    </ul>
-                </li> -->
-                <!-- Account End -->
 
-
-                <!-- Authentication star -->
+                <!-- Authentication -->
                 <li class="pc-item pc-caption">
                     <label>Authentication</label>
-                    <i data-feather="monitor"></i>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link" target="_blank">
-                        <span class="pc-micon"> <i data-feather="lock"></i></span>
-                        <span class="pc-mtext">Login</span>
+                <li class="pc-item">
+                    <a href="{{url('/logout')}}" class="pc-link">
+                        <span class="pc-micon"><i data-feather="log-out"></i></span>
+                        <span class="pc-mtext">Logout</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#" class="pc-link" target="_blank">
-                        <span class="pc-micon"> <i data-feather="user-plus"></i></span>
-                        <span class="pc-mtext">Register</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>

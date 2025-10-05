@@ -23,6 +23,10 @@ class FeePayment extends Model
         'receipt_no',
     ];
 
+    protected $casts = [
+        'payment_date' => 'date',
+    ];
+
     public function student()
     {
         return $this->belongsTo(Student::class); 

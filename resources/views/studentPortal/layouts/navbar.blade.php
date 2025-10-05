@@ -106,7 +106,7 @@
                     <label>Authentication</label>
                 </li>
                 <li class="pc-item">
-                    <a href="{{url('/logout')}}" class="pc-link">
+                    <a href="{{url('/login')}}" class="pc-link">
                         <span class="pc-micon"><i data-feather="log-out"></i></span>
                         <span class="pc-mtext">Logout</span>
                     </a>

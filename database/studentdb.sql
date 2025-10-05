@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2025 at 03:00 PM
+-- Generation Time: Oct 05, 2025 at 09:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -245,6 +245,32 @@ CREATE TABLE `fee_payments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `fee_payments`
+--
+
+INSERT INTO `fee_payments` (`id`, `student_id`, `fee_structure_id`, `amount_paid`, `discount`, `due_amount`, `payment_date`, `month`, `year`, `payment_method`, `status`, `receipt_no`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 672.31, 2.99, 74.70, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'TKLIOSL6', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(2, 1, 2, 1523.90, 6.77, 169.32, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'IMUWKMBW', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(3, 1, 3, 403.39, 1.79, 44.82, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'RHMTVE8B', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(4, 1, 4, 35.86, 0.16, 3.98, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'NTRW0BSQ', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(5, 1, 5, 53.78, 0.24, 5.98, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'A9DOUPWB', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(6, 1, 6, 62.75, 0.28, 6.97, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'OXE7QTJE', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(7, 1, 7, 134.46, 0.60, 14.94, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'QXPFQI5N', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(8, 1, 8, 1344.62, 5.98, 149.40, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'QWFWFRM2', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(9, 1, 9, 179.28, 0.80, 19.92, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'FZEZHUCF', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(10, 1, 10, 89.65, 0.39, 9.97, '2025-10-04', 9, 2025, 'Cash', 'Partial', 'HSXRTHJ0', '2025-10-05 04:30:44', '2025-10-05 04:30:44'),
+(11, 1, 1, 747.01, 2.99, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'TPHQR7EE', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(12, 1, 2, 1693.23, 6.77, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'KJL1JNND', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(13, 1, 3, 448.21, 1.79, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'HY5HP4WV', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(14, 1, 4, 39.84, 0.16, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'LALLFL8J', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(15, 1, 5, 59.76, 0.24, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'AWETFVUK', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(16, 1, 6, 69.72, 0.28, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'BXJ5DS2Y', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(17, 1, 7, 149.40, 0.60, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'SLMZTKKP', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(18, 1, 8, 1494.02, 5.98, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'BFIX2L5D', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(19, 1, 9, 199.20, 0.80, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'CN06DYKG', '2025-10-05 05:08:45', '2025-10-05 05:08:45'),
+(20, 1, 10, 99.61, 0.39, 0.00, '2025-10-05', 10, 2025, 'Cash', 'Paid', 'NPSNBWDT', '2025-10-05 05:08:45', '2025-10-05 05:08:45');
+
 -- --------------------------------------------------------
 
 --
@@ -260,6 +286,22 @@ CREATE TABLE `fee_structures` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `fee_structures`
+--
+
+INSERT INTO `fee_structures` (`id`, `class_id`, `fee_cat_id`, `amount`, `due_date`, `created_at`, `updated_at`) VALUES
+(1, 12, 1, 750.00, '2025-11-05', '2025-10-05 04:29:11', '2025-10-05 04:29:11'),
+(2, 12, 2, 1700.00, '2025-11-05', '2025-10-05 04:29:18', '2025-10-05 04:29:18'),
+(3, 12, 3, 450.00, '2025-11-05', '2025-10-05 04:29:25', '2025-10-05 04:29:25'),
+(4, 12, 4, 40.00, '2025-11-05', '2025-10-05 04:29:34', '2025-10-05 04:29:34'),
+(5, 12, 5, 60.00, '2025-11-05', '2025-10-05 04:29:43', '2025-10-05 04:29:43'),
+(6, 12, 6, 70.00, '2025-11-05', '2025-10-05 04:29:50', '2025-10-05 04:29:50'),
+(7, 12, 7, 150.00, '2025-11-05', '2025-10-05 04:29:58', '2025-10-05 04:29:58'),
+(8, 12, 8, 1500.00, '2025-11-05', '2025-10-05 04:30:04', '2025-10-05 04:30:04'),
+(9, 12, 9, 200.00, '2025-11-05', '2025-10-05 04:30:11', '2025-10-05 04:30:11'),
+(10, 12, 10, 100.00, '2025-11-05', '2025-10-05 04:30:16', '2025-10-05 04:30:16');
 
 -- --------------------------------------------------------
 
@@ -460,7 +502,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `first_name`, `last_name`, `dob`, `gender`, `blood_group`, `religion`, `nationality`, `national_id`, `contact_number`, `email`, `password`, `address1`, `address2`, `father_name`, `father_profession`, `father_contact`, `father_email`, `father_nid`, `mother_name`, `mother_profession`, `mother_contact`, `mother_email`, `mother_nid`, `guardian_name`, `guardian_contact`, `guardian_email`, `guardian_nid`, `guardian_relationship`, `status`, `roll_number`, `class_id`, `attend_date`, `remark`, `photo`, `father_photo`, `mother_photo`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Gene', 'Ebert', '2022-02-16', 'Male', 'A+', 'Christian', 'Bangladeshi', '1', '760-766-0993', 'student2@example.com', '$2y$12$kbdGf0nYgxvLOE9i8QMpVeG2I/.drLx5E5MHZYJcT20ANkHZKwvSy', '12169 Moore Route\nJeaniechester, MA 46438', 'Suite 607', 'Prof. Vicente Mitchell', 'Doctor', '+1 (802) 564-2956', 'student2@example.com', '2', 'Miss Modesta Stanton', 'Businesswoman', '985-864-5950', 'student3@example.com', '3', 'Miss Whitney Keeling PhD', '1-251-664-7117', 'student4@example.com', '4', 'Aunt', 1, 1, 12, '2025-10-05', 'N/A', NULL, NULL, NULL, '9d2aDCNLTW49ZYSmT6gpwSHfKcJrnAzkyB3wTNAGXdDGR4L595rv6S5Fi6sB', '2025-10-04 10:28:03', '2025-10-04 11:54:04'),
+(1, 'SAMIM', 'HossaiN', NULL, 'Male', 'A+', 'Christian', 'Bangladeshi', '65454655', '760-766-0993', 'student2@example.com', '$2y$12$kbdGf0nYgxvLOE9i8QMpVeG2I/.drLx5E5MHZYJcT20ANkHZKwvSy', '12169 Moore Route\r\nJeaniechester, MA 46438', '12169 Moore Route\r\nJeaniechester, MA 46438', 'Prof. Vicente Mitchell', 'Doctor', '+1 (802) 564-2956', 'student2@example.com', '321654654', 'Miss Modesta Stanton', 'Businesswoman', '985-864-5950', 'student3@example.com', '365498765', 'Miss Whitney Keeling PhD', '1-251-664-7117', 'student4@example.com', '654654654', 'Aunt', 1, 1, 12, '2025-10-05', 'N/A', 'std-SAMIM-1759637573.jpg', 'std-SAMIM-Prof. Vicente Mitchell-1759637573.jpg', 'std-SAMIM-Miss Modesta Stanton-1759637573.jpg', '9d2aDCNLTW49ZYSmT6gpwSHfKcJrnAzkyB3wTNAGXdDGR4L595rv6S5Fi6sB', '2025-10-04 10:28:03', '2025-10-05 04:13:55'),
 (2, 'Cicero', 'McGlynn', '1978-01-07', 'Other', 'AB-', 'Buddhist', 'Bangladeshi', '6', '828-873-2879', 'student7@example.com', '$2y$12$h7kWru7p2YP8m5pIhMGj3uX0tJgOBVVJFKzbuWnLgH4cN4iO.kUhy', '50507 Kevon Bypass Apt. 885\nNorth Leonora, IA 87813', 'Suite 128', 'Bertha Kulas Jr.', 'Doctor', '352-446-7605', 'student7@example.com', '7', 'Zella Robel', 'Teacher', '1-325-254-2858', 'student8@example.com', '8', 'Neoma Hoeger', '1-681-453-4355', 'student9@example.com', '9', 'Brother', 1, 1, 5, '2025-10-04', 'N/A', NULL, NULL, NULL, NULL, '2025-10-04 10:28:04', '2025-10-04 11:45:18'),
 (3, 'Sydnee', 'Larson', '2002-11-02', 'Female', 'B-', 'Islam', 'Bangladeshi', '11', '+1.901.620.6667', 'student12@example.com', '$2y$12$4eEVOdW4cqg9q/ErJp9zn.YW9afusiPpvs0svpU.Ee0dAOVnzSexW', '824 Corkery Crossing\nSouth Devin, OR 63265-7202', 'Suite 412', 'Fern Schumm', 'Doctor', '+19565199975', 'student12@example.com', '12', 'Mae Gleason', 'Teacher', '(563) 931-9849', 'student13@example.com', '13', 'Raul Hammes', '+1.680.930.0343', 'student14@example.com', '14', 'Sister', 1, 2, 1, '2025-10-04', 'N/A', NULL, NULL, NULL, NULL, '2025-10-04 10:28:04', '2025-10-04 11:45:18'),
 (4, 'Jessie', 'Keeling', '2016-07-04', 'Other', 'B+', 'Other', 'Bangladeshi', '16', '+1 (445) 858-9438', 'student17@example.com', '$2y$12$uCzAW1n0BbjX5kN8lNkBBeoilah9efvlrdjCa9BDOvGbU/Ekw2EJu', '11290 Jude Glens\nNorth Myron, NV 65759', 'Suite 150', 'Prof. Brad Kohler', 'Businessman', '+1 (806) 930-7449', 'student17@example.com', '17', 'Carmen Olson', 'Businesswoman', '+1-682-384-6229', 'student18@example.com', '18', 'Cristal Bartoletti', '305.792.3155', 'student19@example.com', '19', 'Aunt', 1, 1, 11, '2025-10-04', 'N/A', NULL, NULL, NULL, NULL, '2025-10-04 10:28:04', '2025-10-04 11:45:18'),
@@ -1215,13 +1257,13 @@ ALTER TABLE `fee_categories`
 -- AUTO_INCREMENT for table `fee_payments`
 --
 ALTER TABLE `fee_payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `fee_structures`
 --
 ALTER TABLE `fee_structures`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `marks`

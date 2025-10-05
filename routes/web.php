@@ -166,5 +166,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/get-student-attendace', [StudentPortalController::class, 'getAttedance']);
     Route::get('/student-exam-list', [StudentPortalController::class, 'examList'])->name('student-exam-list');
     Route::get('/student-results', [StudentPortalController::class, 'results'])->name('student-result');
+    Route::get('/student-fee-details', [StudentPortalController::class, 'feeDetails'])->name('student-fee-details');
+    Route::get('/student-payment-history', [StudentPortalController::class, 'feeHistory'])->name('payment-history');
 
 });

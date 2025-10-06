@@ -181,12 +181,12 @@
                                 <span class="pc-mtext">Attendance Records</span>
                             </a>
                         </li>
-                        <li class="pc-item pc-hasmenu">
+                        <!-- <li class="pc-item pc-hasmenu">
                             <a href="#" class="pc-link">
                                 <span class="pc-micon"> <i data-feather="edit"></i></span>
                                 <span class="pc-mtext">Attendance Reports</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">

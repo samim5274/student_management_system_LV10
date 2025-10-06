@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher - (SMS)</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="{{ asset('assets/fonts/phosphor/duotone/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/tabler-icons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" />
+
+    <!-- Vite (Tailwind last to avoid override) -->
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    <title>Teacher Details-(SMS)</title>
-
-    <!-- [Font] Family -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <!-- [phosphor Icons] https://phosphoricons.com/ -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/phosphor/duotone/style.css') }}" />
-    <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/tabler-icons.min.css') }}" />
-    <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}" />
-    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}" />
-    <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" />
 </head>
-<!-- [Body] Start -->
 
 <body>
     
@@ -182,70 +181,74 @@
                                         </div>
                                     </div>
 
-                                    <div class="w-full md:w-1/3 px-3 grid grid-cols-3 gap-4">
-                                        <div class="text-center">
-                                            <label class="block text-gray-600 mb-1" for="photo">Student Photo</label>
-                                            <div id="student_photo_upload" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                                <div class="space-y-1 text-center">
-                                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                    <div class="flex text-sm text-gray-600">
-                                                        <label for="student_photo" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                            <span>Upload a file</span>
-                                                            <input id="student_photo" name="student_photo" type="file" class="sr-only" accept="image/*">
-                                                        </label>
-                                                        <p class="pl-1">or drag and drop</p>
-                                                    </div>
-                                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
-                                                </div>
-                                            </div>
-                                            <img id="student_preview" src="#" alt="your image" class="mt-3 w-60 h-60 object-cover mx-auto rounded-md" style="display:none;"/>
-                                        </div>
+                                    <div class="w-full px-3">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
 
-                                        <div class="text-center">
-                                            <label class="block text-gray-600 mb-1" for="father_photo">Father Photo</label>
-                                            <div id="father_photo_upload" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                                <div class="space-y-1 text-center">
-                                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                    <div class="flex text-sm text-gray-600">
-                                                        <label for="father_photo" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                            <span>Upload a file</span>
-                                                            <input id="father_photo" name="father_photo" type="file" class="sr-only" accept="image/*">
-                                                        </label>
-                                                        <p class="pl-1">or drag and drop</p>
+                                            <div class="border rounded-lg p-4 shadow-sm bg-white text-center">
+                                                <label class="block text-gray-600 mb-1" for="photo">Teacher Photo</label>
+                                                <div id="teacher_photo_upload" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                                    <div class="space-y-1 text-center">
+                                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <div class="flex text-sm text-gray-600">
+                                                            <label for="teacher_photo" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                                <span>Upload a file</span>
+                                                                <input id="teacher_photo" name="teacher_photo" type="file" class="sr-only" accept="image/*">
+                                                            </label>
+                                                            <p class="pl-1">or drag and drop</p>
+                                                        </div>
+                                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
                                                     </div>
-                                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
                                                 </div>
+                                                <img id="student_preview" src="#" alt="your image" class="mt-3 w-60 h-60 object-cover mx-auto rounded-md" style="display:none;"/>
                                             </div>
-                                            <img id="father_preview" src="#" alt="your image" class="mt-3 w-60 h-60 object-cover mx-auto rounded-md" style="display:none;"/>
-                                        </div>
 
-                                        <div class="text-center">
-                                            <label class="block text-gray-600 mb-1" for="mother_photo">Mother Photo</label>
-                                            <div id="mother_photo_upload" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                                <div class="space-y-1 text-center">
-                                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                    <div class="flex text-sm text-gray-600">
-                                                        <label for="mother_photo" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                            <span>Upload a file</span>
-                                                            <input id="mother_photo" name="mother_photo" type="file" class="sr-only" accept="image/*">
-                                                        </label>
-                                                        <p class="pl-1">or drag and drop</p>
+                                            <div class="border rounded-lg p-4 shadow-sm bg-white text-center">
+                                                <label class="block text-gray-600 mb-1" for="father_photo">Father Photo</label>
+                                                <div id="father_photo_upload" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                                    <div class="space-y-1 text-center">
+                                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <div class="flex text-sm text-gray-600">
+                                                            <label for="father_photo" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                                <span>Upload a file</span>
+                                                                <input id="father_photo" name="father_photo" type="file" class="sr-only" accept="image/*">
+                                                            </label>
+                                                            <p class="pl-1">or drag and drop</p>
+                                                        </div>
+                                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
                                                     </div>
-                                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
                                                 </div>
+                                                <img id="father_preview" src="#" alt="your image" class="mt-3 w-60 h-60 object-cover mx-auto rounded-md" style="display:none;"/>
                                             </div>
-                                            <img id="mother_preview" src="#" alt="your image" class="mt-3 w-60 h-60 object-cover mx-auto rounded-md" style="display:none;"/>
+
+                                            <div class="border rounded-lg p-4 shadow-sm bg-white text-center">
+                                                <label class="block text-gray-600 mb-1" for="mother_photo">Mother Photo</label>
+                                                <div id="mother_photo_upload" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                                    <div class="space-y-1 text-center">
+                                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <div class="flex text-sm text-gray-600">
+                                                            <label for="mother_photo" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                                <span>Upload a file</span>
+                                                                <input id="mother_photo" name="mother_photo" type="file" class="sr-only" accept="image/*">
+                                                            </label>
+                                                            <p class="pl-1">or drag and drop</p>
+                                                        </div>
+                                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
+                                                    </div>
+                                                </div>
+                                                <img id="mother_preview" src="#" alt="your image" class="mt-3 w-60 h-60 object-cover mx-auto rounded-md" style="display:none;"/>
+                                            </div>
+
                                         </div>
                                     </div>
 
                                     <!-- Submit Button -->
-                                    <div class="text-center">
+                                    <div class="border rounded-lg p-4 shadow-sm bg-white text-center">
                                         <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 w-full rounded-md shadow-md transition duration-300" onclick="return confirmSubmit(event)">
                                         Submit
                                         </button>
@@ -290,7 +293,7 @@
                 });
             }
 
-            setupImageUpload("student_photo", "student_preview", "student_photo_upload");
+            setupImageUpload("teacher_photo", "student_preview", "teacher_photo_upload");
             setupImageUpload("father_photo", "father_preview", "father_photo_upload");
             setupImageUpload("mother_photo", "mother_preview", "mother_photo_upload");
 

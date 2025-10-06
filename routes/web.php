@@ -23,16 +23,6 @@ Auth::routes();
 Route::get('/login', [AdminController::class, 'loginView']);
 Route::post('/user-login', [AdminController::class, 'userLogin']);
 
-Route::get('/clear', function () {
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
-    Artisan::call('view:clear');
-    Artisan::call('route:clear');
-
-    return redirect()->back()->with('success','Caches cleared successfully.');
-});
-
-
 Route::group(['middleware' => ['admin']], function(){
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

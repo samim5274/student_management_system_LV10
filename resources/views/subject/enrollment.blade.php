@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject - (SMS)</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="{{ asset('assets/fonts/phosphor/duotone/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/tabler-icons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" />
+
+    <!-- Vite (Tailwind last to avoid override) -->
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    <title>Enrollment Details-(SMS)</title>
-
-    <!-- [Font] Family -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <!-- [phosphor Icons] https://phosphoricons.com/ -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/phosphor/duotone/style.css') }}" />
-    <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/tabler-icons.min.css') }}" />
-    <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}" />
-    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}" />
-    <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" />
 </head>
-<!-- [Body] Start -->
 
 <body>
     

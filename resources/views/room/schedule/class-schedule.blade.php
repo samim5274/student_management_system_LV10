@@ -53,56 +53,6 @@
             </div>
 
             <!-- Card -->
-            <!-- <div class="card rounded-lg border shadow-sm">
-                <div class="card-header px-4 py-3 border-b bg-gray-100">
-                    <h3 class="text-lg font-semibold text-gray-700">Schedule Details</h3>
-                </div>
-                <div class="card-body p-6">
-                    <div class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        @foreach($classes as $val)
-                        @if($val->id != 13)
-                            <a href="#" class="block group ">
-                                <div class="border border-gray-200 p-5 rounded-xl bg-white
-                                            group-hover:-translate-y-2 group-hover:shadow-xl
-                                            shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                                    
-                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
-                                        
-                                        <p class="text-base text-gray-800">
-                                            # {{ $loop->iteration}}
-                                        </p>
-                                        
-                                        <h3 class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">
-                                            {{ $val->name ?? 'N/A'}}
-                                        </h3>
-
-                                        <span class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 text-center">
-                                            {{ $val->section ?? 'N/A' }}
-                                        </span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between text-sm text-gray-600 mt-2">
-                                        <span class="flex items-center">
-                                            <i class="fa-solid fa-user-tie mr-2 text-blue-500"></i>
-                                            {{ $val->teachers->first_name }} {{ $val->teachers->last_name }}
-                                        </span>
-                                        <span class="flex items-center italic">
-                                            <i class="fa-solid fa-users mr-2 text-purple-500"></i>
-                                            Capacity: {{ $val->capacity }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        @endif
-                        @endforeach
-                    </div>
-                </div>
-            </div> -->
-
-
-
-
-
             <div class="max-w-5xl mx-auto px-4 py-8">
                 <h1 class="text-2xl font-bold text-gray-800 mb-6">📝 Create Class Schedule</h1>
                 <form action="{{url('/submit-class-schedule')}}" method="POST" class="space-y-6">
@@ -124,7 +74,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-1">Day</label>
                             <select name="day" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                                 <option disabled selected>-- select day --</option>    
-                            @foreach($days as $day)
+                                @foreach($days as $day)
                                 <option value="{{ $day }}">{{ $day }}</option>
                                 @endforeach
                             </select>
@@ -186,56 +136,124 @@
 
 
 
-            <div class="max-w-7xl mx-auto px-4 py-8">
+            <!-- <div class="max-w-7xl mx-auto px-4 py-8">
                 <h1 class="text-2xl font-bold text-gray-800 mb-6">📅 Class Schedule</h1>
                 <div class="overflow-x-auto bg-white shadow-md rounded-lg">
-                    <table class="min-w-full text-sm text-left border-collapse">
+                    <table class="min-w-full text-sm text-center border-collapse">
                         <thead>
                             <tr class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-                                <th class="px-6 py-3">Class</th>
-                                <th class="px-6 py-3">Day</th>
-                                <th class="px-6 py-3">Period</th>
-                                <th class="px-6 py-3">Teacher</th>
-                                <th class="px-6 py-3">Subject</th>
-                                <th class="px-6 py-3">Time</th>
+                                <th class="px-4 py-3">Day</th>
+                                @for ($i = 1; $i <= 8; $i++)
+                                    <th class="px-4 py-3">Period {{ $i }}</th>
+                                @endfor
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            @forelse($schedules as $schedule)
-                                <tr class="hover:bg-gray-50 transition">
-                                    <td class="px-6 py-4 font-medium text-gray-800">
-                                        {{ $schedule->classRoom->name ?? 'N/A' }}
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-600">
-                                        {{ $schedule->day }}
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-600">
-                                        Period {{ $schedule->period }}
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-600">
-                                        {{ $schedule->teacher->first_name ?? 'N/A' }} {{ $schedule->teacher->last_name ?? 'N/A' }}
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-600">
-                                        {{ $schedule->subject->name ?? 'N/A' }}
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-600">
-                                        {{ \Carbon\Carbon::parse($schedule->start_time)->format('h:i A') }}
-                                        –
-                                        {{ \Carbon\Carbon::parse($schedule->end_time)->format('h:i A') }}
-                                    </td>
-                                </tr>
-                            @empty
+                            @if(isset($schedules) && $schedules->count() > 0)
+                                @foreach($days as $day)
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-4 py-4 font-medium text-gray-800">{{ $day }}</td>
+                                        @for ($i = 1; $i <= 8; $i++)
+                                            <td class="px-4 py-4 text-gray-600">
+                                                @php
+                                                    $schedule = $schedules->where('day', $day)->where('period', $i)->first();
+                                                @endphp
+                                                @if($schedule)
+                                                    <strong>{{ $schedule->subject->name ?? 'N/A' }}</strong>
+                                                    <br>
+                                                    <small>{{ $schedule->teacher->first_name ?? 'N/A' }} {{ $schedule->teacher->last_name ?? '' }}</small>
+                                                    <br>
+                                                    <small>{{ \Carbon\Carbon::parse($schedule->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($schedule->end_time)->format('h:i A') }}</small>
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
+                                        @endfor
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr>
-                                    <td colspan="6" class="px-6 py-4 text-center text-gray-500">
-                                        No schedule found.
+                                    <td colspan="9" class="px-6 py-4 text-center text-gray-500">
+                                        No schedule found. Select a class to view the schedule.
                                     </td>
                                 </tr>
-                            @endforelse
+                            @endif
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> -->
 
+
+            <div class="space-y-10">
+                @php
+                    $groupedSchedules = $schedules->groupBy('class_id')->sortKeys();
+                    $days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'];
+                @endphp
+                @foreach($groupedSchedules as $classId => $classSchedules)
+                    <div class="bg-white shadow-xl rounded-2xl p-6 overflow-x-auto">
+                        <h2 class="text-2xl font-bold text-indigo-700 text-center mb-6">
+                            Class: {{ $classSchedules->first()->classRoom->name ?? 'N/A' }}
+                            <span class="text-sm text-gray-500 ml-2">
+                                ({{ $classSchedules->first()->classRoom->section ?? '' }})
+                            </span>
+                        </h2>
+
+                        <table class="min-w-full border border-gray-200 text-sm text-center rounded-lg overflow-hidden">
+                            <thead>
+                                <tr class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                                    <th class="px-4 py-3 border">Day</th>
+                                    @for($i = 1; $i <= 8; $i++)
+                                        <th class="px-4 py-3 border">Period {{ $i }}</th>
+                                    @endfor
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach($days as $day)
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-4 py-3 font-semibold text-gray-800 border bg-gray-100">
+                                            {{ $day }}
+                                        </td>
+
+                                        @php
+                                            $daySchedules = $classSchedules->where('day', $day)->take(8);
+                                        @endphp
+
+                                        @for($p = 1; $p <= 8; $p++)
+                                            @php
+                                                $period = $daySchedules->firstWhere('period', $p);
+                                            @endphp
+
+                                            @if($period)
+                                                <td class="px-3 py-3 border text-gray-700">
+                                                    <div class="font-medium text-blue-700">
+                                                        {{ $period->subject->name ?? 'N/A' }}
+                                                    </div>
+                                                    <div class="text-xs text-gray-500">
+                                                        {{ $period->teacher->first_name ?? '' }} {{ $period->teacher->last_name ?? '' }}
+                                                    </div>
+                                                    <div class="text-[11px] text-gray-400 mt-1">
+                                                        {{ \Carbon\Carbon::parse($period->start_time)->format('h:i A') }}
+                                                        –
+                                                        {{ \Carbon\Carbon::parse($period->end_time)->format('h:i A') }}
+                                                    </div>
+                                                </td>
+                                            @else
+                                                <td class="px-3 py-3 border text-gray-400 italic bg-gray-50">
+                                                    Free
+                                                </td>
+                                            @endif
+                                        @endfor
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-gray-500 mt-3 text-center">
+                            Note: Maximum 8 periods per day.
+                        </p>
+                    </div>
+                @endforeach
+            </div>
 
 
 

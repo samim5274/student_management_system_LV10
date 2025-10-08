@@ -101,13 +101,25 @@ class ClassController extends Controller
         $request->validate([
             'class_id'    => 'required|exists:rooms,id',
             'day'         => 'required|string',
-            'teacher'     => 'required|array|size:8',
-            'subject'     => 'required|array|size:8',
-            'start_time'  => 'required|array|size:8',
-            'end_time'    => 'required|array|size:8',
+            'teacher'     => 'required|array',
+            'subject'     => 'required|array',
+            'start_time'  => 'required|array',
+            'end_time'    => 'required|array',
         ]);
 
-        for($i=0; $i<8; $i++) {
+        $total = count($request->subject);
+
+        for($i=0; $i<$total; $i++) {
+            // skip if any required field missing
+            if (
+                empty($request->teacher[$i]) ||
+                empty($request->subject[$i]) ||
+                empty($request->start_time[$i]) ||
+                empty($request->end_time[$i])
+            ) {
+                continue; // this row skip
+            }
+
             $teacher_id = $request->teacher[$i];
             $period     = $i+1;
             $day        = $request->day;

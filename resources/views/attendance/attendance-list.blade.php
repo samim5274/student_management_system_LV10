@@ -67,7 +67,7 @@
                                         <span class="text-gray-400 text-sm">{{ $val->roll_number }}</span>
                                     </td>
                                     <!-- Photo -->
-                                    <td class="px-4 py-3 whitespace-nowrap">
+                                    <!-- <td class="px-4 py-3 whitespace-nowrap">
                                         @if($val->photo)
                                             <a href="{{ url('/edit-student-view/'.$val->id) }}">
                                                 <img class="w-12 h-12 rounded-full border border-gray-300 object-cover" src="{{ asset('img/student/' . $val->photo) }}" alt="student-photo" />
@@ -75,7 +75,7 @@
                                         @else
                                             <span class="text-gray-400 text-sm">No Image</span>
                                         @endif
-                                    </td>
+                                    </td> -->
 
                                     <!-- Name & Address -->
                                     <td class="px-4 py-3 whitespace-nowrap">
@@ -83,7 +83,7 @@
                                             <a href="{{ url('/edit-student-view/'.$val->id) }}" class="text-gray-900 font-semibold hover:text-blue-600 transition">
                                                 {{ $val->first_name }} {{ $val->last_name }} - <i class="fa fa-droplet text-red-500"></i> {{ $val->blood_group }}
                                             </a>
-                                            <span class="text-gray-500 text-sm">{{ $val->address }}</span>
+                                            <span class="text-gray-500 text-sm">{{ $val->address1 }}</span>
                                         </div>
                                     </td>
 

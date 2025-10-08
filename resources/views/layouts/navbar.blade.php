@@ -131,7 +131,13 @@
                                 <span class="pc-micon"> <i class="fa-solid fa-business-time"></i>  </span>
                                 <span class="pc-mtext">Class Schedule</span>
                             </a>
-                        </li>                        
+                        </li>  
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{url('/modify-class-schedule')}}"> 
+                                <span class="pc-micon"> <i class="fa-solid fa-calendar-days"></i>  </span>
+                                <span class="pc-mtext">Modify Schedule</span>
+                            </a>
+                        </li>                      
                         <li class="pc-item pc-hasmenu">
                             <a href="{{url('/assign-teacher-list')}}" class="pc-link">
                                 <span class="pc-micon"> <i class="fa-solid fa-user-plus"></i></span>

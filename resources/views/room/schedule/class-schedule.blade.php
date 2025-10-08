@@ -42,7 +42,7 @@
             <div class="page-header mb-6">
                 <div class="page-block">
                     <div class="page-header-title">
-                        <h5 class="mb-1 font-semibold text-gray-800">Classes Details</h5>
+                        <h5 class="mb-1 font-semibold text-gray-800">Classes Schedule Details</h5>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -136,54 +136,6 @@
 
 
 
-            <!-- <div class="max-w-7xl mx-auto px-4 py-8">
-                <h1 class="text-2xl font-bold text-gray-800 mb-6">📅 Class Schedule</h1>
-                <div class="overflow-x-auto bg-white shadow-md rounded-lg">
-                    <table class="min-w-full text-sm text-center border-collapse">
-                        <thead>
-                            <tr class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-                                <th class="px-4 py-3">Day</th>
-                                @for ($i = 1; $i <= 8; $i++)
-                                    <th class="px-4 py-3">Period {{ $i }}</th>
-                                @endfor
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            @if(isset($schedules) && $schedules->count() > 0)
-                                @foreach($days as $day)
-                                    <tr class="hover:bg-gray-50 transition">
-                                        <td class="px-4 py-4 font-medium text-gray-800">{{ $day }}</td>
-                                        @for ($i = 1; $i <= 8; $i++)
-                                            <td class="px-4 py-4 text-gray-600">
-                                                @php
-                                                    $schedule = $schedules->where('day', $day)->where('period', $i)->first();
-                                                @endphp
-                                                @if($schedule)
-                                                    <strong>{{ $schedule->subject->name ?? 'N/A' }}</strong>
-                                                    <br>
-                                                    <small>{{ $schedule->teacher->first_name ?? 'N/A' }} {{ $schedule->teacher->last_name ?? '' }}</small>
-                                                    <br>
-                                                    <small>{{ \Carbon\Carbon::parse($schedule->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($schedule->end_time)->format('h:i A') }}</small>
-                                                @else
-                                                    -
-                                                @endif
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="9" class="px-6 py-4 text-center text-gray-500">
-                                        No schedule found. Select a class to view the schedule.
-                                    </td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-            </div> -->
-
-
             <div class="space-y-10">
                 @php
                     $groupedSchedules = $schedules->groupBy('class_id')->sortKeys();
@@ -205,6 +157,7 @@
                                     @for($i = 1; $i <= 8; $i++)
                                         <th class="px-4 py-3 border">Period {{ $i }}</th>
                                     @endfor
+                                    <th>Modify</th>
                                 </tr>
                             </thead>
 

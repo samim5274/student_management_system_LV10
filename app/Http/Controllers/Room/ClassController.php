@@ -87,14 +87,13 @@ class ClassController extends Controller
         return redirect()->back()->with('success', 'Teacher updated successfully!');
     }
 
-    public function classSchedule(){
-        
+    public function classSchedule(){        
         $teachers = Teacher::all();
         $subjects = Subject::all();
         $classes  = Room::all();
         $days     = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
         $schedules = ClassSchedule::all();
-        return view('room.schedule.class-schedule', compact('classes','teachers','subjects','classes','days','schedules'));
+        return view('room.schedule.class-schedule', compact('classes','teachers','subjects','days','schedules'));
     }
 
     public function store(Request $request) {
@@ -158,5 +157,92 @@ class ClassController extends Controller
         }
 
         return redirect()->back()->with('success', 'Class schedule created successfully!');
+    }
+
+    public function modifySchedule(){
+        $classes  = Room::all();
+        $days     = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
+        $schedules = ClassSchedule::all();
+        return view('room.schedule.modify-class-schedule', compact('classes','days','schedules'));
+    }
+
+    public function searchSchedule(Request $request){
+        $classes  = Room::all();
+        $days     = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
+        $schedules = ClassSchedule::where('class_id', $request->class_id)->where('day', $request->day)->get();
+        return view('room.schedule.modify-class-schedule', compact('classes','days','schedules'));
+    }
+
+    public function editSchedule($scheduleId){
+        $schedules = classSchedule::where('id', $scheduleId)->first();
+
+        $teachers = Teacher::all();
+        $subjects = Subject::all();
+        $classes  = Room::all();
+        $days     = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
+
+        return view('room.schedule.class-schedule-edit', compact('classes','teachers','subjects','days','schedules'));
+    }
+
+    public function updateClassSchedule(Request $request, $id){
+        $request->validate([
+            'class_id'   => 'required|exists:rooms,id',
+            'day'        => 'required|string',
+            'teacher'    => 'required|array|size:1',
+            'subject'    => 'required',
+            'start_time' => 'required|array|size:1',
+            'end_time'   => 'required|array|size:1',
+        ]);
+
+        // Get existing schedule
+        $schedule = ClassSchedule::findOrFail($id);
+
+        $class_id   = $request->class_id;
+        $day        = $request->day;
+        $period     = $schedule->period;
+        $teacher_id = $request->teacher[0];
+        $subject_id = $request->subject;
+        $start_time = $request->start_time[0];
+        $end_time   = $request->end_time[0];
+
+        // Skip check if same teacher/time not changed
+        $teacherConflict = ClassSchedule::where('teacher_id', $teacher_id)
+            ->where('day', $day)
+            ->where('period', $period)
+            ->where('id', '!=', $id)
+            ->exists();
+
+        if ($teacherConflict) {
+            return redirect()->back()
+                ->with('error', "Teacher already assigned in period {$period} on {$day}. Please choose another teacher.")
+                ->withInput();
+        }
+
+        $classConflict = ClassSchedule::where('class_id', $class_id)
+            ->where('day', $day)
+            ->where('period', $period)
+            ->where('id', '!=', $id)
+            ->exists();
+
+        if ($classConflict) {
+            return redirect()->back()
+                ->with('error', "Class already has a schedule in period {$period} on {$day}.")
+                ->withInput();
+        }
+
+        if (strtotime($end_time) <= strtotime($start_time)) {
+            return redirect()->back()
+                ->with('error', 'End time must be later than start time.')
+                ->withInput();
+        }
+
+        // --- Update the Schedule ---
+        $schedule->teacher_id = $teacher_id;
+        $schedule->subject_id = $subject_id;
+        $schedule->start_time = $start_time;
+        $schedule->end_time   = $end_time;
+        $schedule->update();
+
+        return redirect()->route('class-schedule-modify-view')->with('success', 'Class schedule updated successfully!');
     }
 }

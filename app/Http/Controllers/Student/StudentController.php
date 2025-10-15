@@ -296,6 +296,73 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Student information edited successfully!');
     }
 
-    
+    public function liveSearch(Request $request){
+        $output = '';
+        $students = Student::with('room')
+            ->where('first_name', 'like', '%'.$request->liveSearchStudent.'%')
+            ->orWhere('last_name', 'like', '%'.$request->liveSearchStudent.'%')
+            ->orWhere('email', 'like', '%'.$request->liveSearchStudent.'%')
+            ->orWhere('father_name', 'like', '%'.$request->liveSearchStudent.'%')
+            ->orWhere('father_contact', 'like', '%'.$request->liveSearchStudent.'%')
+            ->orWhere('mother_name', 'like', '%'.$request->liveSearchStudent.'%')
+            ->orWhere('contact_number', 'like', '%'.$request->liveSearchStudent.'%')->get();
+
+        $i = 1;
+        foreach ($students as $val) {
+            $name = strlen($val->first_name.' '.$val->last_name) > 22
+                ? substr($val->first_name.' '.$val->last_name, 0, 22).'...'
+                : $val->first_name.' '.$val->last_name;
+
+            $img = asset('img/student/' . $val->photo);
+            $editUrl = url('/edit-student-view/'.$val->id);
+            $address = strlen($val->address) > 22 ? substr($val->address, 0, 22).'...' : $val->address;
+            $email = $val->email;
+            $contact = $val->contact_number;
+            $roomName = $val->room->name ?? 'N/A';
+            $section = $val->room->section ?? 'N/A';
+            $dob = \Carbon\Carbon::parse($val->dob)->format('d M, Y');
+            $bloodGroup = $val->blood_group;
+
+            $output .= '
+            <tr class="unread resultData">
+                <td>'.$i++.'</td>
+                <td>';
+            if ($val->photo) {
+                $output .= '<a href="'.$editUrl.'"><img class="rounded-full" style="width: 40px" src="'.$img.'" alt="student" /></a>';
+            } else {
+                $output .= '<a href="'.$editUrl.'"><span class="text-muted">No Image</span></a>';
+            }
+
+            $output .= '
+                </td>
+                <td>
+                    <h6 class="mb-1"><a href="'.$editUrl.'">'.$name.'</a></h6>
+                    <p class="m-0">'.$address.'</p>
+                </td>
+                <td>
+                    <h6 class="mb-1">'.$email.'</h6>
+                    <p class="m-0">0'.$contact.'</p>
+                </td>
+                <td>
+                    <h6 class="mb-1">'.$section.'</h6>
+                    <p class="m-0">'.$roomName.'</p>
+                </td>
+                <td>
+                    <h6 class="text-muted">
+                        <i class="fas fa-circle text-success text-[10px]"></i> '.$dob.'
+                    </h6>
+                    <p class="m-0"><i class="fa fa-droplet text-red-500 text-[10px]"></i> '.$bloodGroup.'</p>
+                </td>
+                <td>
+                    <a href="'.$editUrl.'" class="badge bg-theme-bg-1 text-white text-[12px]">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </a>
+                </td>
+            </tr>';
+        }
+
+        return response($output);
+    }
+
 
 }

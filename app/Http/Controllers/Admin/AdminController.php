@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 use Auth;
@@ -59,5 +60,55 @@ class AdminController extends Controller
                 return redirect()->back()->withErrors(['cbxRole' => 'Invalid role selected.']);
                 break;
         }
+    }
+
+    public function changePassView(){
+        return view('admin.change-password');
+    }
+
+    public function updateUpdate(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'new_password' => [
+                'required',
+                'string',
+                'min:6',              // Minimum 6 characters
+                'regex:/[A-Z]/',      // At least one uppercase letter
+                'regex:/[a-z]/',      // At least one lowercase letter
+                'regex:/[0-9]/',      // At least one number
+                'regex:/[!@#$%^&*(),.?":{}|<>]/' // At least one special character
+            ],
+            'confirm_password' => 'required|same:new_password',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = Auth::guard('teacher')->user();        
+
+        // Check current password
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect');
+        }
+
+        // Update password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password updated successfully');
+    }
+
+    public function profile(){
+        return view('profile.my-account');
+    }
+
+    public function setting(){
+        return view('profile.setting');
+    }
+
+    public function support(){
+        return view('profile.support');
     }
 }

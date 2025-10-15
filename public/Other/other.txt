@@ -52,3 +52,18 @@ protected $fillable = [
         'student_id',
         'subject_id',
     ];
+
+    $student = Student::where('first_name', 'like' , '%'.$request->search.'%')
+                            ->where('last_name', 'like' , '%'.$request->search.'%')
+                            ->where('email', 'like' , '%'.$request->search.'%')
+                            ->where('father_name', 'like' , '%'.$request->search.'%')
+                            ->where('father_contact', 'like' , '%'.$request->search.'%')
+                            ->where('father_nid', 'like' , '%'.$request->search.'%')
+                            ->where('mother_name', 'like' , '%'.$request->search.'%')
+                            ->where('father_nid', 'like' , '%'.$request->search.'%')
+                            ->where('mother_contact', 'like' , '%'.$request->search.'%')
+                            ->where('guardian_name', 'like' , '%'.$request->search.'%')
+                            ->where('guardian_contact', 'like' , '%'.$request->search.'%')
+                            ->where('guardian_email', 'like' , '%'.$request->search.'%')
+                            ->where('guardian_nid', 'like' , '%'.$request->search.'%')
+                            ->where('contact_number', 'like' , '%'.$request->search.'%')->get();

@@ -46,7 +46,6 @@
                         <ul class="breadcrumb mt-2">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{url('/student-list')}}">Student List</a></li>
-                            <li class="breadcrumb-item"><a href="{{url('/add-student-view')}}">Add Student</a></li>
                             <li class="breadcrumb-item" aria-current="page">Edit Student</li>
                         </ul>
                     </div>

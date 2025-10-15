@@ -56,15 +56,15 @@
                             <i data-feather="settings"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{url('/profile')}}" class="dropdown-item">
                                 <i class="ti ti-user"></i>
                                 <span>My Account</span>
                             </a>
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{url('/setting')}}" class="dropdown-item">
                                 <i class="ti ti-settings"></i>
                                 <span>Settings</span>
                             </a>
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{url('/support')}}" class="dropdown-item">
                                 <i class="ti ti-headset"></i>
                                 <span>Support</span>
                             </a>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="dropdown-body py-4 px-5">
                                 <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{url('/setting')}}" class="dropdown-item">
                                         <span>
                                             <svg class="pc-icon text-muted me-2 inline-block">
                                                 <use xlink:href="#custom-setting-outline"></use>
@@ -196,15 +196,15 @@
                                             <span>Settings</span>
                                         </span>
                                     </a>
-                                    <a href="#" class="dropdown-item">
+                                    <!-- <a href="#" class="dropdown-item">
                                         <span>
                                             <svg class="pc-icon text-muted me-2 inline-block">
                                             <use xlink:href="#custom-share-bold"></use>
                                             </svg>
                                             <span>Share</span>
                                         </span>
-                                    </a>
-                                    <a href="#" class="dropdown-item">
+                                    </a> -->
+                                    <a href="{{url('/change-password')}}" class="dropdown-item">
                                         <span>
                                             <svg class="pc-icon text-muted me-2 inline-block">
                                             <use xlink:href="#custom-lock-outline"></use>

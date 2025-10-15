@@ -25,13 +25,21 @@ Route::post('/user-login', [AdminController::class, 'userLogin']);
 
 Route::group(['middleware' => ['admin']], function(){
 
+    Route::get('/change-password', [AdminController::class, 'changePassView'])->name('change-password-view');
+    Route::post('/update-password', [AdminController::class, 'updateUpdate']);
+    Route::get('/profile', [AdminController::class, 'profile'])->name('user-profile-view');
+    Route::get('/setting', [AdminController::class, 'setting'])->name('setting-view');
+    Route::get('/support', [AdminController::class, 'support'])->name('support-view');
+    
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/database-backup', [DashboardController::class, 'dbBackup']);
 
     Route::get('/student-list', [StudentController::class, 'studentList'])->name('student-list');
     Route::get('/add-student-view', [StudentController::class, 'addStudentView'])->name('add-student-view');
     Route::post('/add-new-student', [StudentController::class, 'addStudent']);
     Route::get('/edit-student-view/{id}', [StudentController::class, 'editStudentView'])->name('student-edit-view');
     Route::post('/edit-student/{id}', [StudentController::class, 'editStudent']);
+    Route::get('liveSearchStudent', [StudentController::class, 'liveSearch']);
 
     Route::get('/student/migration', [PromoteController::class, 'classList'])->name('migration-class-list');
     Route::get('/migration/class/{class}', [PromoteController::class, 'stdList'])->name('student-list-migration');
@@ -50,6 +58,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/add-new-teacher', [TeacherController::class, 'addTeacher']);
     Route::get('/edit-teacher-view/{id}', [TeacherController::class, 'editTeacherView'])->name('teacher-edit-view');
     Route::post('/edit-teacher/{id}', [TeacherController::class, 'editTeacher']);
+    Route::get('liveSearchTeacher', [TeacherController::class, 'liveSearchTeacher']);
 
     Route::get('/teacher-report', [TeacherReportController::class, 'teacherReport'])->name('teacher-report');
 

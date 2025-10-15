@@ -78,6 +78,30 @@
         main_layout_change('vertical');
       </script>
     
+    <!-- for live search -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script>
+        $('#search').on('keyup', function() {
+            let value = $(this).val();
+
+            if(value) {
+                $('.allData').hide();
+            } else {
+                $('.allData').show();
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: '{{ URL::to("liveSearchTeacher") }}',
+                data: {'liveSearchTeacher': value},
+                success: function(data) {
+                    $('#content').html(data);
+                }
+            });
+        });
+    </script>
+
 
   </body>
   <!-- [Body] end -->

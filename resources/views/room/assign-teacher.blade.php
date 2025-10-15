@@ -121,7 +121,7 @@
 
                         
 
-                        <form action="{{ url('/assigned-teacher-update') }}" method="POST" class="space-y-6 p-6 bg-white rounded-xl shadow-md" enctype="multipart/form-data">
+                        <form action="{{ url('/assigned-teacher-update') }}" method="POST" class="space-y-6 p-6" enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" name="class_id" value="{{ $val->id }}">
@@ -141,7 +141,7 @@
 
                             <div class="text-center mt-4">
                                 <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-md transition duration-300" onclick="return confirmSubmit(event)">
-                                    Update Teacher
+                                    Assign Teacher
                                 </button>
                             </div>
                         </form>

@@ -157,7 +157,6 @@
                                     @for($i = 1; $i <= 8; $i++)
                                         <th class="px-4 py-3 border">Period {{ $i }}</th>
                                     @endfor
-                                    <th>Modify</th>
                                 </tr>
                             </thead>
 

@@ -22,12 +22,21 @@
                 <div class="card-header">
                     <h5>Add new Teacher</h5>
                 </div>
+                <div class="card">
+                    <div class="bg-white rounded shadow-md p-4">
+                        <form action="#" method="GET" class="w-full">
+                            <div class="relative">
+                                <input type="search" name="search" id="search" class="w-full rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 py-2 px-4 outline-none transition duration-200" placeholder="Search by teacher name, email, father's name, mother's name, father's contact, mother's contact . . ." />
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover">
-                            <tbody>
+                            <tbody id="content">
                                 @foreach($teacher as $val)
-                                <tr class="unread">
+                                <tr class="unread allData">
                                     <td>
                                         @if($val->photo)
                                             <a href="{{url('/edit-teacher-view/'.$val->id)}}"><img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('img/teacher/' . $val->photo) }}" alt="activity-user" /></a>
@@ -55,6 +64,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                <tr class="row resultData"></tr>
                             </tbody>
                         </table>
                     </div>

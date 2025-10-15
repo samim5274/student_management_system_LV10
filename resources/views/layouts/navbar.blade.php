@@ -253,13 +253,7 @@
                                 <span class="pc-micon"> <i class="fa-solid fa-door-open"></i></span>
                                 <span class="pc-mtext">Enrollment</span>
                             </a>
-                        </li>
-                        <li class="pc-item pc-hasmenu">
-                            <a href="{{url('/student/migration')}}" class="pc-link">
-                                <span class="pc-micon"> <i class="fa-solid fa-up-down"></i></span>
-                                <span class="pc-mtext">Migration</span>
-                            </a>
-                        </li>
+                        </li>                        
                         <li class="pc-item pc-hasmenu">
                             <a href="{{url('/result-and-report-analytics')}}" class="pc-link">
                                 <span class="pc-micon"> <i class="fa-solid fa-chart-simple"></i></span>
@@ -272,7 +266,12 @@
                                 <span class="pc-mtext">Total Result</span>
                             </a>
                         </li>   
-                        
+                        <li class="pc-item pc-hasmenu">
+                            <a href="{{url('/student/migration')}}" class="pc-link">
+                                <span class="pc-micon"> <i class="fa-solid fa-up-down"></i></span>
+                                <span class="pc-mtext">Migration</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- <li class="pc-item pc-hasmenu">
@@ -355,15 +354,15 @@
                 <li class="pc-item pc-hasmenu">
                     <a href="{{url('/login')}}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="lock"></i></span>
-                        <span class="pc-mtext">Login</span>
+                        <span class="pc-mtext">Logout</span>
                     </a>
                 </li>
-                <li class="pc-item pc-hasmenu">
+                <!-- <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"> <i data-feather="user-plus"></i></span>
                         <span class="pc-mtext">Register</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Authentication end -->
 
 

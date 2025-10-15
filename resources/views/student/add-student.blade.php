@@ -41,13 +41,12 @@
                 <div class="page-header">
                     <div class="page-block">
                         <div class="page-header-title">
-                            <h5 class="mb-0 font-medium">Student Details</h5>
+                            <h5 class="mb-0 font-medium">Student Admission</h5>
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{url('/student-list')}}">Student List</a></li>
-                            <li class="breadcrumb-item"><a href="{{url('/add-student-view')}}">Add Student</a></li>
-                            <li class="breadcrumb-item" aria-current="page">New Student</li>
+                            <li class="breadcrumb-item" aria-current="page">Admission Student</li>
                         </ul>
                     </div>
                 </div>

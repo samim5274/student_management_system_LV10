@@ -18,6 +18,18 @@
     <!-- [ Main Content ] start -->
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
+            <div class="w-full mt-4">
+                <div class="card">
+                    <div class="bg-white rounded shadow-md p-4">
+                        <form action="{{ url('/add-to-cart-2') }}" method="GET" class="w-full">
+                            <div class="relative">
+                                <input type="search" name="search" id="search" class="w-full rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 py-2 px-4 outline-none transition duration-200" placeholder="Search by student name, email, father's name, mother's name, father's contact, mother's contact . . ." />
+
+                                <!-- <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm transition duration-200">Search</button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
             <div class="card table-card">
                 <div class="card-header">
                     <h5>Add new Student</h5>
@@ -25,9 +37,9 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover">
-                            <tbody>
+                            <tbody id="content">
                                 @foreach($student as $val)
-                                <tr class="unread">
+                                <tr class="unread allData">
                                     <td>{{$loop->iteration}}</td>
                                     <td>
                                         @if($val->photo)
@@ -60,6 +72,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                <tr class="row resultData"></tr>
                             </tbody>                            
                         </table>
 

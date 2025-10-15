@@ -199,4 +199,67 @@ class TeacherController extends Controller
         return redirect()->back()->with('success', 'Teacher information updated successfully!');
     }
 
+    public function liveSearchTeacher(Request $request){
+        $output = '';
+        $teachers = Teacher::where('first_name', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->orWhere('last_name', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->orWhere('email', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->orWhere('father_name', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->orWhere('father_contact', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->orWhere('mother_name', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->orWhere('contact_number', 'like', '%'.$request->liveSearchTeacher.'%')
+            ->get();
+
+        $i = 1;
+
+        foreach ($teachers as $val) {
+            $name = strlen($val->first_name.' '.$val->last_name) > 22
+                ? substr($val->first_name.' '.$val->last_name, 0, 22).'...'
+                : $val->first_name.' '.$val->last_name;
+
+            $img = asset('img/teacher/' . $val->photo);
+            $editUrl = url('/edit-teacher-view/'.$val->id);
+            $designation = $val->designation ?? 'N/A';
+            $email = $val->email;
+            $address = $val->address ?? 'N/A';
+            $contact = $val->contact_number;
+            $dob = \Carbon\Carbon::parse($val->dob)->format('d M, Y');
+            $bloodGroup = $val->blood_group ?? 'N/A';
+
+            $output .= '<tr class="unread resultData">
+                <td>'.$i++.'</td>
+                <td>';
+
+            if ($val->photo) {
+                $output .= '<a href="'.$editUrl.'"><img class="rounded-full" style="width: 40px" src="'.$img.'" alt="Teacher" /></a>';
+            } else {
+                $output .= '<a href="'.$editUrl.'"><span class="text-muted">No Image</span></a>';
+            }
+
+            $output .= '</td>
+                <td>
+                    <h6 class="mb-1"><a href="'.$editUrl.'">'.$name.'</a></h6>
+                    <p class="m-0">'.$designation.'</p>
+                </td>
+                <td>
+                    <h6 class="mb-1">'.$email.'</h6>
+                    <p class="m-0">'.$address.' || 0'.$contact.'</p>
+                </td>
+                <td>
+                    <h6 class="text-muted">
+                        <i class="fas fa-circle text-success text-[10px]"></i> '.$dob.'
+                    </h6>
+                    <p class="m-0"><i class="fa fa-droplet text-red-500 text-[10px]"></i> '.$bloodGroup.'</p>
+                </td>
+                <td>
+                    <a href="'.$editUrl.'" class="badge bg-theme-bg-1 text-white text-[12px]">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </a>
+                </td>
+            </tr>';
+        }
+
+        return response($output);
+    }
+
 }

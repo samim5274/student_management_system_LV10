@@ -63,7 +63,7 @@ class StudentPortalController extends Controller
 
     public function feeDetails(){
         $student = $student = Auth::guard('student')->user();
-        $structure = FeeStructure::where('class_id', $student->class_id)->get();
+        $structures = FeeStructure::where('class_id', $student->class_id)->get();
         $payments = FeePayment::where('student_id', $student->id)->get();
         $groupedPayments = $payments->groupBy('fee_structure_id');
 
@@ -87,7 +87,7 @@ class StudentPortalController extends Controller
             $previousDue += max($due, 0);
         }
 
-        return view('studentPortal.fee.student-fee-details', compact('student','structure','groupedPayments','previousDue'));
+        return view('studentPortal.fee.student-fee-details', compact('student','structures','groupedPayments','previousDue'));
     }
 
     public function feeHistory(){

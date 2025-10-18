@@ -63,7 +63,7 @@
                             </thead>
 
                             <tbody class="divide-y divide-gray-200">
-                                @forelse($structure as $index => $structure)
+                                @forelse($structures as $index => $structure)
                                     @php
                                         $payments = $groupedPayments[$structure->id] ?? collect();
                                         $totalPaid = $payments->sum('amount_paid');

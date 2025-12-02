@@ -178,7 +178,13 @@
                             <div class="dropdown-header flex items-center justify-between py-4 px-5 bg-primary-500">
                                 <div class="flex mb-1 items-center">
                                     <div class="shrink-0">
-                                        <img src="{{ asset('img/teacher/'. Auth::guard('teacher')->user()->photo ) }}" alt="user-image" class="w-10 rounded-full" />
+                                        @if(Auth::guard('teacher')->check())
+                                            <img src="{{ asset('img/teacher/' . Auth::guard('teacher')->user()->photo) }}" 
+                                                alt="user-image" class="w-10 rounded-full">
+                                        @else
+                                            <img src="{{ asset('img/default.png') }}" 
+                                                alt="default-user" class="w-10 rounded-full">
+                                        @endif
                                     </div>
                                     <div class="grow ms-3">
                                         <h6 class="mb-1 text-white">{{ Auth::guard('teacher')->user()->first_name }} {{ Auth::guard('teacher')->user()->last_name }}</h6>
